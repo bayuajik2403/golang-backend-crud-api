@@ -3,7 +3,7 @@ package controllers
 import (
 	"net/http"
 
-	"github.com/bayuajik2403/go-crud-api/api/responses"
+	"github.com/bayuajik2403/golang-backend-crud-api/api/responses"
 )
 
 func (server *Server) Home(w http.ResponseWriter, r *http.Request) {

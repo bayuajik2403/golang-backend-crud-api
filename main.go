@@ -1,6 +1,6 @@
 package main
 
-import "github.com/bayuajik2403/go-crud-api/api"
+import "github.com/bayuajik2403/golang-backend-crud-api/api"
 
 func main() {
 	api.Run()

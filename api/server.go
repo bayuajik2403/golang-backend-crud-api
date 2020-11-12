@@ -5,8 +5,8 @@ import (
 	"log"
 	"os"
 
-	"github.com/bayuajik2403/go-crud-api/api/controllers"
-	"github.com/bayuajik2403/go-crud-api/api/seed"
+	"github.com/bayuajik2403/golang-backend-crud-api/api/controllers"
+	"github.com/bayuajik2403/golang-backend-crud-api/api/seed"
 	"github.com/joho/godotenv"
 )
 

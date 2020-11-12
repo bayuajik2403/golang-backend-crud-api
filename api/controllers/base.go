@@ -10,7 +10,7 @@ import (
 
 	_ "github.com/jinzhu/gorm/dialects/postgres" //postgres database driver
 
-	"github.com/bayuajik2403/go-crud-api/api/models"
+	"github.com/bayuajik2403/golang-backend-crud-api/api/models"
 )
 
 type Server struct {

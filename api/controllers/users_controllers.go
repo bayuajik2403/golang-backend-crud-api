@@ -8,10 +8,10 @@ import (
 	"net/http"
 	"strconv"
 
-	"github.com/bayuajik2403/go-crud-api/api/auth"
-	"github.com/bayuajik2403/go-crud-api/api/models"
-	"github.com/bayuajik2403/go-crud-api/api/responses"
-	"github.com/bayuajik2403/go-crud-api/api/utils/formaterror"
+	"github.com/bayuajik2403/golang-backend-crud-api/api/auth"
+	"github.com/bayuajik2403/golang-backend-crud-api/api/models"
+	"github.com/bayuajik2403/golang-backend-crud-api/api/responses"
+	"github.com/bayuajik2403/golang-backend-crud-api/api/utils/formaterror"
 	"github.com/gorilla/mux"
 )
 

@@ -1,4 +1,4 @@
-module github.com/bayuajik2403/go-crud-api
+module github.com/bayuajik2403/golang-backend-crud-api
 
 go 1.15
 

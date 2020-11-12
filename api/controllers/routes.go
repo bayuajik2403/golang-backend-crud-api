@@ -1,6 +1,6 @@
 package controllers
 
-import "github.com/bayuajik2403/go-crud-api/api/middlewares"
+import "github.com/bayuajik2403/golang-backend-crud-api/api/middlewares"
 
 func (s *Server) initializeRoutes() {
 

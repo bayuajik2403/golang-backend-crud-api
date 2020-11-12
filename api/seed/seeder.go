@@ -3,7 +3,7 @@ package seed
 import (
 	"log"
 
-	"github.com/bayuajik2403/go-crud-api/api/models"
+	"github.com/bayuajik2403/golang-backend-crud-api/api/models"
 	"github.com/jinzhu/gorm"
 )
 
