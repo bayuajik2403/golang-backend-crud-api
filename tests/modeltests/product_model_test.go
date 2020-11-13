@@ -109,7 +109,7 @@ func TestUpdateAProduct(t *testing.T) {
 	if err != nil {
 		log.Fatalf("Error refreshing all table: %v\n", err)
 	}
-	user, product, _, err := seedOneAllTable()
+	user, _, _, err := seedOneAllTable()
 	if err != nil {
 		log.Fatalf("Error Seeding table")
 	}

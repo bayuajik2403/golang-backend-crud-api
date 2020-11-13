@@ -62,7 +62,7 @@ func TestGetUserByID(t *testing.T) {
 	if err != nil {
 		log.Fatalf("cannot seed users table: %v", err)
 	}
-	foundUser, err := userInstance.FindUserByID(server.DB, user.ID)
+	foundUser, err := userInstance.FindUserByID(server.DB, uint32(user.ID))
 	if err != nil {
 		t.Errorf("this is the error getting one user: %v\n", err)
 		return
@@ -90,7 +90,7 @@ func TestUpdateAUser(t *testing.T) {
 		Email:    "testupdate@gmail.com",
 		Password: "password",
 	}
-	updatedUser, err := userUpdate.UpdateAUser(server.DB, user.ID)
+	updatedUser, err := userUpdate.UpdateAUser(server.DB, uint32(user.ID))
 	if err != nil {
 		t.Errorf("this is the error updating the user: %v\n", err)
 		return
@@ -113,7 +113,7 @@ func TestDeleteAUser(t *testing.T) {
 		log.Fatalf("Cannot seed user: %v\n", err)
 	}
 
-	isDeleted, err := userInstance.DeleteAUser(server.DB, user.ID)
+	isDeleted, err := userInstance.DeleteAUser(server.DB, uint32(user.ID))
 	if err != nil {
 		t.Errorf("this is the error deleting the user: %v\n", err)
 		return

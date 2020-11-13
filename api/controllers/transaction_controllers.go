@@ -203,7 +203,7 @@ func (server *Server) DeleteTransaction(w http.ResponseWriter, r *http.Request) 
 		responses.ERROR(w, http.StatusUnauthorized, errors.New("Unauthorized"))
 		return
 	}
-	_, err = transaction.DeleteATransaction(server.DB, pid, uid)
+	_, err = transaction.DeleteATransaction(server.DB, pid, uint32(uid))
 	if err != nil {
 		responses.ERROR(w, http.StatusBadRequest, err)
 		return

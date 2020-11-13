@@ -10,8 +10,8 @@ import (
 	"strconv"
 	"testing"
 
-	"github.com/gorilla/mux"
 	"github.com/bayuajik2403/golang-backend-crud-api/api/models"
+	"github.com/gorilla/mux"
 	"gopkg.in/go-playground/assert.v1"
 )
 
@@ -177,7 +177,7 @@ func TestGetUserByID(t *testing.T) {
 func TestUpdateUser(t *testing.T) {
 
 	var AuthEmail, AuthPassword string
-	var AuthID uint32
+	var AuthID uint64
 
 	err := refreshUserTable()
 	if err != nil {
@@ -332,7 +332,7 @@ func TestUpdateUser(t *testing.T) {
 func TestDeleteUser(t *testing.T) {
 
 	var AuthEmail, AuthPassword string
-	var AuthID uint32
+	var AuthID uint64
 
 	err := refreshUserTable()
 	if err != nil {
@@ -369,7 +369,7 @@ func TestDeleteUser(t *testing.T) {
 			// Convert int32 to int first before converting to string
 			id:           strconv.Itoa(int(AuthID)),
 			tokenGiven:   tokenString,
-			statusCode:   204,
+			statusCode:   200,
 			errorMessage: "",
 		},
 		{

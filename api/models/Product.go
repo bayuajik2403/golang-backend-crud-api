@@ -16,7 +16,7 @@ type Product struct {
 	AvailableStock     uint32    `gorm:"not null;" json:"available_stock"`
 	Price              uint32    `gorm:"not null;" json:"price"`
 	Seller             User      `json:"seller"`
-	SellerID           uint32    `gorm:"not null" json:"seller_id"`
+	SellerID           uint64    `gorm:"not null" json:"seller_id"`
 	CreatedAt          time.Time `gorm:"default:CURRENT_TIMESTAMP" json:"created_at"`
 	UpdatedAt          time.Time `gorm:"default:CURRENT_TIMESTAMP" json:"updated_at"`
 }
@@ -38,7 +38,8 @@ func (p *Product) Validate() error {
 	if p.ProductDescription == "" {
 		return errors.New("Required Product Description")
 	}
-	if p.SellerID < 1 {
+	var n uint64 = 1
+	if p.SellerID < n {
 		return errors.New("Required Seller ID")
 	}
 	return nil
@@ -127,7 +128,7 @@ func (p *Product) UpdateAProduct(db *gorm.DB) (*Product, error) {
 	return p, nil
 }
 
-func (p *Product) DeleteAProduct(db *gorm.DB, pid uint64, uid uint32) (int64, error) {
+func (p *Product) DeleteAProduct(db *gorm.DB, pid uint64, uid uint64) (int64, error) {
 
 	db = db.Debug().Model(&Product{}).Where("id = ? and seller_id = ?", pid, uid).Take(&Product{}).Delete(&Product{})
 

@@ -40,7 +40,7 @@ func TestSaveTransaction(t *testing.T) {
 	}
 
 	newTransaction := models.Transaction{
-		ID:         1,
+		// ID:         1,
 		ProductID:  product.ID,
 		Qty:        3,
 		TotalPrice: 45000,
@@ -86,7 +86,7 @@ func TestGetTransactionByUser(t *testing.T) {
 	if err != nil {
 		log.Fatalf("Error refreshing all table: %v\n", err)
 	}
-	user, transaction, _, err := seedOneAllTable()
+	user, _, transaction, err := seedOneAllTable()
 	if err != nil {
 		log.Fatalf("Error seeding one all table")
 	}
@@ -108,7 +108,7 @@ func TestUpdateATransaction(t *testing.T) {
 	if err != nil {
 		log.Fatalf("Error refreshing all table: %v\n", err)
 	}
-	user, product, transaction, err := seedOneAllTable()
+	user, product, _, err := seedOneAllTable()
 	if err != nil {
 		log.Fatalf("Error Seeding table")
 	}
@@ -137,11 +137,11 @@ func TestDeleteATransaction(t *testing.T) {
 	if err != nil {
 		log.Fatalf("Error refreshing all table: %v\n", err)
 	}
-	_, transaction, _, err := seedOneAllTable()
+	_, _, transaction, err := seedOneAllTable()
 	if err != nil {
 		log.Fatalf("Error Seeding tables")
 	}
-	isDeleted, err := transactionInstance.DeleteATransaction(server.DB, transaction.ID, transaction.BuyerID)
+	isDeleted, err := transactionInstance.DeleteATransaction(server.DB, transaction.ID, uint32(transaction.BuyerID))
 	if err != nil {
 		t.Errorf("this is the error deleting the user: %v\n", err)
 		return

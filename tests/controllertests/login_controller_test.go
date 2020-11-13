@@ -59,7 +59,7 @@ func TestSignIn(t *testing.T) {
 
 func TestLogin(t *testing.T) {
 
-	refreshUserTable()
+	refreshAllTable()
 
 	_, err := seedOneUser()
 	if err != nil {

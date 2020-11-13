@@ -14,7 +14,7 @@ type Transaction struct {
 	Qty        uint32    `gorm:"not null" json:"qty"`
 	TotalPrice uint32    `gorm:"not null" json:"total_price"`
 	Buyer      User      `json:"buyer"`
-	BuyerID    uint32    `gorm:"not null" json:"buyer_id"`
+	BuyerID    uint64    `gorm:"not null" json:"buyer_id"`
 	CreatedAt  time.Time `gorsm:"default:CURRENT_TIMESTAMP" json:"created_at"`
 	UpdatedAt  time.Time `gorm:"default:CURRENT_TIMESTAMP" json:"updated_at"`
 }

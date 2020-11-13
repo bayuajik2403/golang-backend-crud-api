@@ -50,12 +50,12 @@ func Database() {
 }
 
 func refreshUserTable() error {
-	server.DB.Exec("SET foreign_key_checks=0")
+	//server.DB.Exec("SET foreign_key_checks=0")
 	err := server.DB.Debug().DropTableIfExists(&models.User{}).Error
 	if err != nil {
 		return err
 	}
-	server.DB.Exec("SET foreign_key_checks=1")
+	//server.DB.Exec("SET foreign_key_checks=1")
 	err = server.DB.Debug().AutoMigrate(&models.User{}).Error
 	if err != nil {
 		return err
@@ -112,13 +112,13 @@ func seedUsers() error {
 
 func refreshAllTable() error {
 
-	server.DB.Exec("SET foreign_key_checks=0")
+	//server.DB.Exec("SET foreign_key_checks=0")
 	// NOTE: when deleting first delete Post as Post is depending on User table
 	err := server.DB.Debug().DropTableIfExists(&models.Product{}, &models.Transaction{}, &models.User{}).Error
 	if err != nil {
 		return err
 	}
-	server.DB.Exec("SET foreign_key_checks=1")
+	//server.DB.Exec("SET foreign_key_checks=1")
 	err = server.DB.Debug().AutoMigrate(&models.User{}, &models.Product{}, &models.Transaction{}).Error
 	if err != nil {
 		return err
@@ -132,7 +132,7 @@ func seedOneAllTable() (models.User, models.Product, models.Transaction, error) 
 
 	err := refreshAllTable()
 	if err != nil {
-		return models.Product{}, models.Transaction{}, err
+		return models.User{}, models.Product{}, models.Transaction{}, err
 	}
 	user := models.User{
 		Nickname: "Faker Phil",
@@ -141,7 +141,7 @@ func seedOneAllTable() (models.User, models.Product, models.Transaction, error) 
 	}
 	err = server.DB.Debug().Model(&models.User{}).Create(&user).Error
 	if err != nil {
-		return models.Product{}, models.Transaction{}, err
+		return models.User{}, models.Product{}, models.Transaction{}, err
 	}
 	product := models.Product{
 		ProductName:        "Oreo Kelapa",
@@ -152,7 +152,7 @@ func seedOneAllTable() (models.User, models.Product, models.Transaction, error) 
 	}
 	err = server.DB.Debug().Model(&models.Product{}).Create(&product).Error
 	if err != nil {
-		return models.Product{}, models.Transaction{}, err
+		return models.User{}, models.Product{}, models.Transaction{}, err
 	}
 	transaction := models.Transaction{
 		ProductID:  product.ID,
@@ -162,7 +162,7 @@ func seedOneAllTable() (models.User, models.Product, models.Transaction, error) 
 	}
 	err = server.DB.Debug().Model(&models.Transaction{}).Create(&transaction).Error
 	if err != nil {
-		return models.Product{}, models.Transaction{}, err
+		return models.User{}, models.Product{}, models.Transaction{}, err
 	}
 
 	log.Printf("seedOneAllTable routine OK !!!")

@@ -1,0 +1,1718 @@
+We are connected to the postgres database
+=== RUN   TestSignIn
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/controllertests/controller_test.go:72) 
+[2020-11-13 17:10:40]  [64.66ms]  DROP TABLE "users"  
+[0 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/controllertests/controller_test.go:77) 
+[2020-11-13 17:10:41]  [218.49ms]  CREATE TABLE "users" ("id" bigserial,"nickname" varchar(255) NOT NULL UNIQUE,"email" varchar(100) NOT NULL UNIQUE,"password" varchar(100) NOT NULL,"created_at" timestamp with time zone DEFAULT CURRENT_TIMESTAMP,"updated_at" timestamp with time zone DEFAULT CURRENT_TIMESTAMP , PRIMARY KEY ("id"))  
+[0 rows affected or returned ] 
+2020/11/13 17:10:41 Successfully refreshed table
+2020/11/13 17:10:41 refreshUserTable routine OK !!!
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/controllertests/controller_test.go:72) 
+[2020-11-13 17:10:41]  [19.12ms]  DROP TABLE "users"  
+[0 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/controllertests/controller_test.go:77) 
+[2020-11-13 17:10:41]  [162.13ms]  CREATE TABLE "users" ("id" bigserial,"nickname" varchar(255) NOT NULL UNIQUE,"email" varchar(100) NOT NULL UNIQUE,"password" varchar(100) NOT NULL,"created_at" timestamp with time zone DEFAULT CURRENT_TIMESTAMP,"updated_at" timestamp with time zone DEFAULT CURRENT_TIMESTAMP , PRIMARY KEY ("id"))  
+[0 rows affected or returned ] 
+2020/11/13 17:10:41 Successfully refreshed table
+2020/11/13 17:10:41 refreshUserTable routine OK !!!
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/controllertests/controller_test.go:99) 
+[2020-11-13 17:10:41]  [2.05ms]  INSERT INTO "users" ("nickname","email","password","created_at","updated_at") VALUES ('Pet','pet@gmail.com','.5jNVzFVPh2FLmq2hDK','2020-11-13 17:10:41','2020-11-13 17:10:41') RETURNING "users"."id"  
+[1 rows affected or returned ] 
+2020/11/13 17:10:41 seedOneUser routine OK !!!
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/api/controllers/login_controllers.go:49) 
+[2020-11-13 17:10:41]  [1.67ms]  SELECT * FROM "users"  WHERE (email = 'pet@gmail.com') LIMIT 1  
+[1 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/api/controllers/login_controllers.go:49) 
+[2020-11-13 17:10:41]  [1.05ms]  SELECT * FROM "users"  WHERE (email = 'pet@gmail.com') LIMIT 1  
+[1 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/api/controllers/login_controllers.go:49) 
+[2020-11-13 17:10:41]  [0.98ms]  SELECT * FROM "users"  WHERE (email = 'Wrong email') LIMIT 1  
+[0 rows affected or returned ] 
+--- PASS: TestSignIn (0.85s)
+=== RUN   TestLogin
+2020/11/13 17:10:42 Successfully refreshed tables
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/controllertests/controller_test.go:72) 
+[2020-11-13 17:10:42]  [9.06ms]  DROP TABLE "users"  
+[0 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/controllertests/controller_test.go:77) 
+[2020-11-13 17:10:42]  [174.14ms]  CREATE TABLE "users" ("id" bigserial,"nickname" varchar(255) NOT NULL UNIQUE,"email" varchar(100) NOT NULL UNIQUE,"password" varchar(100) NOT NULL,"created_at" timestamp with time zone DEFAULT CURRENT_TIMESTAMP,"updated_at" timestamp with time zone DEFAULT CURRENT_TIMESTAMP , PRIMARY KEY ("id"))  
+[0 rows affected or returned ] 
+2020/11/13 17:10:42 Successfully refreshed table
+2020/11/13 17:10:42 refreshUserTable routine OK !!!
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/controllertests/controller_test.go:99) 
+[2020-11-13 17:10:42]  [2.42ms]  INSERT INTO "users" ("nickname","email","password","created_at","updated_at") VALUES ('Pet','pet@gmail.com','/XOdZlg.MjnYqAFqW3/UwivVY9qeEYbKp.l7jLG','2020-11-13 17:10:42','2020-11-13 17:10:42') RETURNING "users"."id"  
+[1 rows affected or returned ] 
+2020/11/13 17:10:42 seedOneUser routine OK !!!
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/api/controllers/login_controllers.go:49) 
+[2020-11-13 17:10:42]  [1.85ms]  SELECT * FROM "users"  WHERE (email = 'pet@gmail.com') LIMIT 1  
+[1 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/api/controllers/login_controllers.go:49) 
+[2020-11-13 17:10:42]  [1.21ms]  SELECT * FROM "users"  WHERE (email = 'pet@gmail.com') LIMIT 1  
+[1 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/api/controllers/login_controllers.go:49) 
+[2020-11-13 17:10:42]  [0.97ms]  SELECT * FROM "users"  WHERE (email = 'frank@gmail.com') LIMIT 1  
+[0 rows affected or returned ] 
+--- PASS: TestLogin (0.99s)
+=== RUN   TestCreateProduct
+2020/11/13 17:10:43 Successfully refreshed tables
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/controllertests/controller_test.go:72) 
+[2020-11-13 17:10:43]  [8.04ms]  DROP TABLE "users"  
+[0 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/controllertests/controller_test.go:77) 
+[2020-11-13 17:10:43]  [174.96ms]  CREATE TABLE "users" ("id" bigserial,"nickname" varchar(255) NOT NULL UNIQUE,"email" varchar(100) NOT NULL UNIQUE,"password" varchar(100) NOT NULL,"created_at" timestamp with time zone DEFAULT CURRENT_TIMESTAMP,"updated_at" timestamp with time zone DEFAULT CURRENT_TIMESTAMP , PRIMARY KEY ("id"))  
+[0 rows affected or returned ] 
+2020/11/13 17:10:43 Successfully refreshed table
+2020/11/13 17:10:43 refreshUserTable routine OK !!!
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/controllertests/controller_test.go:99) 
+[2020-11-13 17:10:43]  [2.21ms]  INSERT INTO "users" ("nickname","email","password","created_at","updated_at") VALUES ('Pet','pet@gmail.com','/7WVRAdWbE.BNYwk6XNRoE5X7QtM3BIzed6B0ja9Qu','2020-11-13 17:10:43','2020-11-13 17:10:43') RETURNING "users"."id"  
+[1 rows affected or returned ] 
+2020/11/13 17:10:43 seedOneUser routine OK !!!
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/api/controllers/login_controllers.go:49) 
+[2020-11-13 17:10:43]  [1.46ms]  SELECT * FROM "users"  WHERE (email = 'pet@gmail.com') LIMIT 1  
+[1 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/api/models/Product.go:50) 
+[2020-11-13 17:10:43]  [1.47ms]  INSERT INTO "products" ("product_name","product_description","available_stock","price","seller_id","created_at","updated_at") VALUES ('Oreo Kelapa Muda','Oreo Kelapa Muda taste',100,15000,1,'2020-11-13 17:10:43','2020-11-13 17:10:43') RETURNING "products"."id"  
+[1 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/api/models/Product.go:55) 
+[2020-11-13 17:10:43]  [1.47ms]  SELECT * FROM "users"  WHERE (id = 1) LIMIT 1  
+[1 rows affected or returned ] 
+--- PASS: TestCreateProduct (0.96s)
+=== RUN   TestGetProducts
+2020/11/13 17:10:43 Successfully refreshed tables
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/controllertests/controller_test.go:237) 
+[2020-11-13 17:10:44]  [2.08ms]  INSERT INTO "users" ("nickname","email","password","created_at","updated_at") VALUES ('Yongwoo Grid','yongwoo@gmail.com','','2020-11-13 17:10:44','2020-11-13 17:10:44') RETURNING "users"."id"  
+[1 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/controllertests/controller_test.go:243) 
+[2020-11-13 17:10:44]  [1.88ms]  INSERT INTO "products" ("product_name","product_description","available_stock","price","seller_id","created_at","updated_at") VALUES ('Oreo Kelapa','Oreo Kelapa taste',100,15000,1,'2020-11-13 17:10:44','2020-11-13 17:10:44') RETURNING "products"."id"  
+[1 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/controllertests/controller_test.go:247) 
+[2020-11-13 17:10:44]  [1.71ms]  INSERT INTO "transactions" ("product_id","qty","total_price","buyer_id","created_at","updated_at") VALUES (1,3,45000,1,'2020-11-13 17:10:44','2020-11-13 17:10:44') RETURNING "transactions"."id"  
+[1 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/controllertests/controller_test.go:237) 
+[2020-11-13 17:10:44]  [1.17ms]  INSERT INTO "users" ("nickname","email","password","created_at","updated_at") VALUES ('Yura Ann','yura@gmail.com','/FCIOOzBah8ISS3AauAmb0WgvEwq.QT2CfFW','2020-11-13 17:10:44','2020-11-13 17:10:44') RETURNING "users"."id"  
+[1 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/controllertests/controller_test.go:243) 
+[2020-11-13 17:10:44]  [0.91ms]  INSERT INTO "products" ("product_name","product_description","available_stock","price","seller_id","created_at","updated_at") VALUES ('Oreo Kelapa Muda','Oreo Kelapa Muda taste',100,15000,2,'2020-11-13 17:10:44','2020-11-13 17:10:44') RETURNING "products"."id"  
+[1 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/controllertests/controller_test.go:247) 
+[2020-11-13 17:10:44]  [1.29ms]  INSERT INTO "transactions" ("product_id","qty","total_price","buyer_id","created_at","updated_at") VALUES (2,3,45000,2,'2020-11-13 17:10:44','2020-11-13 17:10:44') RETURNING "transactions"."id"  
+[1 rows affected or returned ] 
+2020/11/13 17:10:44 seedAllTable routine OK !!!
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/api/models/Product.go:66) 
+[2020-11-13 17:10:44]  [1.10ms]  SELECT * FROM "products"   LIMIT 100  
+[2 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/api/models/Product.go:72) 
+[2020-11-13 17:10:44]  [1.13ms]  SELECT * FROM "users"  WHERE (id = 1) LIMIT 1  
+[1 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/api/models/Product.go:72) 
+[2020-11-13 17:10:44]  [1.02ms]  SELECT * FROM "users"  WHERE (id = 2) LIMIT 1  
+[1 rows affected or returned ] 
+--- PASS: TestGetProducts (0.78s)
+=== RUN   TestGetProductByID
+2020/11/13 17:10:44 Successfully refreshed tables
+2020/11/13 17:10:45 Successfully refreshed tables
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/controllertests/controller_test.go:160) 
+[2020-11-13 17:10:45]  [2.18ms]  INSERT INTO "users" ("nickname","email","password","created_at","updated_at") VALUES ('Faker Phil','faker@gmail.com','/vOkU2G1rptpEOVDhGC8yBNuXzqAfO','2020-11-13 17:10:45','2020-11-13 17:10:45') RETURNING "users"."id"  
+[1 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/controllertests/controller_test.go:171) 
+[2020-11-13 17:10:45]  [1.89ms]  INSERT INTO "products" ("product_name","product_description","available_stock","price","seller_id","created_at","updated_at") VALUES ('Oreo Kelapa','Oreo Kelapa taste',100,15000,1,'2020-11-13 17:10:45','2020-11-13 17:10:45') RETURNING "products"."id"  
+[1 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/controllertests/controller_test.go:181) 
+[2020-11-13 17:10:45]  [1.66ms]  INSERT INTO "transactions" ("product_id","qty","total_price","buyer_id","created_at","updated_at") VALUES (1,3,45000,1,'2020-11-13 17:10:45','2020-11-13 17:10:45') RETURNING "transactions"."id"  
+[1 rows affected or returned ] 
+2020/11/13 17:10:45 seedOneAllTable routine OK !!!
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/api/models/Product.go:83) 
+[2020-11-13 17:10:45]  [1.43ms]  SELECT * FROM "products"  WHERE (id = 1) LIMIT 1  
+[1 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/api/models/Product.go:88) 
+[2020-11-13 17:10:45]  [1.00ms]  SELECT * FROM "users"  WHERE (id = 1) LIMIT 1  
+[1 rows affected or returned ] 
+--- PASS: TestGetProductByID (1.06s)
+=== RUN   TestUpdateProduct
+2020/11/13 17:10:45 Successfully refreshed tables
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/controllertests/controller_test.go:237) 
+[2020-11-13 17:10:45]  [2.38ms]  INSERT INTO "users" ("nickname","email","password","created_at","updated_at") VALUES ('Yongwoo Grid','yongwoo@gmail.com','.l9.N44cOIXaI946sYzpvSZalh4vVSSNz5G','2020-11-13 17:10:45','2020-11-13 17:10:45') RETURNING "users"."id"  
+[1 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/controllertests/controller_test.go:243) 
+[2020-11-13 17:10:45]  [1.56ms]  INSERT INTO "products" ("product_name","product_description","available_stock","price","seller_id","created_at","updated_at") VALUES ('Oreo Kelapa','Oreo Kelapa taste',100,15000,1,'2020-11-13 17:10:45','2020-11-13 17:10:45') RETURNING "products"."id"  
+[1 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/controllertests/controller_test.go:247) 
+[2020-11-13 17:10:45]  [1.75ms]  INSERT INTO "transactions" ("product_id","qty","total_price","buyer_id","created_at","updated_at") VALUES (1,3,45000,1,'2020-11-13 17:10:45','2020-11-13 17:10:45') RETURNING "transactions"."id"  
+[1 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/controllertests/controller_test.go:237) 
+[2020-11-13 17:10:46]  [1.24ms]  INSERT INTO "users" ("nickname","email","password","created_at","updated_at") VALUES ('Yura Ann','yura@gmail.com','.DfG.hvoWnQu.zw.nmp6lVhrKjdqmSbKo1KNjSN06DFm','2020-11-13 17:10:46','2020-11-13 17:10:46') RETURNING "users"."id"  
+[1 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/controllertests/controller_test.go:243) 
+[2020-11-13 17:10:46]  [0.89ms]  INSERT INTO "products" ("product_name","product_description","available_stock","price","seller_id","created_at","updated_at") VALUES ('Oreo Kelapa Muda','Oreo Kelapa Muda taste',100,15000,2,'2020-11-13 17:10:46','2020-11-13 17:10:46') RETURNING "products"."id"  
+[1 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/controllertests/controller_test.go:247) 
+[2020-11-13 17:10:46]  [1.13ms]  INSERT INTO "transactions" ("product_id","qty","total_price","buyer_id","created_at","updated_at") VALUES (2,3,45000,2,'2020-11-13 17:10:46','2020-11-13 17:10:46') RETURNING "transactions"."id"  
+[1 rows affected or returned ] 
+2020/11/13 17:10:46 seedAllTable routine OK !!!
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/api/controllers/login_controllers.go:49) 
+[2020-11-13 17:10:46]  [1.32ms]  SELECT * FROM "users"  WHERE (email = 'yongwoo@gmail.com') LIMIT 1  
+[1 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/api/controllers/product_controllers.go:124) 
+[2020-11-13 17:10:46]  [1.32ms]  SELECT * FROM "products"  WHERE (id = 1) LIMIT 1  
+[1 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/api/models/Product.go:118) 
+[2020-11-13 17:10:46]  [0.82ms]  UPDATE "products" SET "available_stock" = 100, "price" = 15000, "product_description" = 'update', "product_name" = 'update', "updated_at" = '2020-11-13 17:10:46'  WHERE (id = 1)  
+[1 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/api/models/Product.go:123) 
+[2020-11-13 17:10:46]  [1.43ms]  SELECT * FROM "users"  WHERE (id = 1) LIMIT 1  
+[1 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/api/controllers/product_controllers.go:124) 
+[2020-11-13 17:10:46]  [1.26ms]  SELECT * FROM "products"  WHERE (id = 1) LIMIT 1  
+[1 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/api/controllers/product_controllers.go:124) 
+[2020-11-13 17:10:46]  [1.38ms]  SELECT * FROM "products"  WHERE (id = 1) LIMIT 1  
+[1 rows affected or returned ] 
+--- PASS: TestUpdateProduct (0.85s)
+=== RUN   TestDeleteProduct
+2020/11/13 17:10:46 Successfully refreshed tables
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/controllertests/controller_test.go:237) 
+[2020-11-13 17:10:46]  [2.25ms]  INSERT INTO "users" ("nickname","email","password","created_at","updated_at") VALUES ('Yongwoo Grid','yongwoo@gmail.com','/i4KOY1SBR5dRLEO4q6MQ.','2020-11-13 17:10:46','2020-11-13 17:10:46') RETURNING "users"."id"  
+[1 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/controllertests/controller_test.go:243) 
+[2020-11-13 17:10:46]  [1.81ms]  INSERT INTO "products" ("product_name","product_description","available_stock","price","seller_id","created_at","updated_at") VALUES ('Oreo Kelapa','Oreo Kelapa taste',100,15000,1,'2020-11-13 17:10:46','2020-11-13 17:10:46') RETURNING "products"."id"  
+[1 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/controllertests/controller_test.go:247) 
+[2020-11-13 17:10:46]  [2.06ms]  INSERT INTO "transactions" ("product_id","qty","total_price","buyer_id","created_at","updated_at") VALUES (1,3,45000,1,'2020-11-13 17:10:46','2020-11-13 17:10:46') RETURNING "transactions"."id"  
+[1 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/controllertests/controller_test.go:237) 
+[2020-11-13 17:10:46]  [1.24ms]  INSERT INTO "users" ("nickname","email","password","created_at","updated_at") VALUES ('Yura Ann','yura@gmail.com','.eV0VLEULxCKbYsd0LVlY3YdmlfS1rBLy','2020-11-13 17:10:46','2020-11-13 17:10:46') RETURNING "users"."id"  
+[1 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/controllertests/controller_test.go:243) 
+[2020-11-13 17:10:46]  [1.04ms]  INSERT INTO "products" ("product_name","product_description","available_stock","price","seller_id","created_at","updated_at") VALUES ('Oreo Kelapa Muda','Oreo Kelapa Muda taste',100,15000,2,'2020-11-13 17:10:46','2020-11-13 17:10:46') RETURNING "products"."id"  
+[1 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/controllertests/controller_test.go:247) 
+[2020-11-13 17:10:46]  [1.04ms]  INSERT INTO "transactions" ("product_id","qty","total_price","buyer_id","created_at","updated_at") VALUES (2,3,45000,2,'2020-11-13 17:10:46','2020-11-13 17:10:46') RETURNING "transactions"."id"  
+[1 rows affected or returned ] 
+2020/11/13 17:10:46 seedAllTable routine OK !!!
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/api/controllers/login_controllers.go:49) 
+[2020-11-13 17:10:46]  [1.43ms]  SELECT * FROM "users"  WHERE (email = 'yura@gmail.com') LIMIT 1  
+[1 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/api/controllers/product_controllers.go:195) 
+[2020-11-13 17:10:47]  [1.23ms]  SELECT * FROM "products"  WHERE (id = 2) LIMIT 1  
+[1 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/api/models/Product.go:133) 
+[2020-11-13 17:10:47]  [0.84ms]  SELECT * FROM "products"  WHERE (id = 2 and seller_id = 2) LIMIT 1  
+[1 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/api/models/Product.go:133) 
+[2020-11-13 17:10:47]  [0.54ms]  DELETE FROM "products"  WHERE (id = 2 and seller_id = 2)  
+[1 rows affected or returned ] 
+--- PASS: TestDeleteProduct (0.83s)
+=== RUN   TestCreateTransaction
+2020/11/13 17:10:47 Successfully refreshed tables
+2020/11/13 17:10:47 Successfully refreshed tables
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/controllertests/controller_test.go:160) 
+[2020-11-13 17:10:48]  [1.94ms]  INSERT INTO "users" ("nickname","email","password","created_at","updated_at") VALUES ('Faker Phil','faker@gmail.com','/4ArJ28VCh6oeI8rZ7iH.5wR/7WnyHwNWeJmVl0GoHwBRMd1R5Em','2020-11-13 17:10:48','2020-11-13 17:10:48') RETURNING "users"."id"  
+[1 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/controllertests/controller_test.go:171) 
+[2020-11-13 17:10:48]  [1.70ms]  INSERT INTO "products" ("product_name","product_description","available_stock","price","seller_id","created_at","updated_at") VALUES ('Oreo Kelapa','Oreo Kelapa taste',100,15000,1,'2020-11-13 17:10:48','2020-11-13 17:10:48') RETURNING "products"."id"  
+[1 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/controllertests/controller_test.go:181) 
+[2020-11-13 17:10:48]  [1.70ms]  INSERT INTO "transactions" ("product_id","qty","total_price","buyer_id","created_at","updated_at") VALUES (1,3,45000,1,'2020-11-13 17:10:48','2020-11-13 17:10:48') RETURNING "transactions"."id"  
+[1 rows affected or returned ] 
+2020/11/13 17:10:48 seedOneAllTable routine OK !!!
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/api/controllers/login_controllers.go:49) 
+[2020-11-13 17:10:48]  [1.51ms]  SELECT * FROM "users"  WHERE (email = 'faker@gmail.com') LIMIT 1  
+[1 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/api/models/Transaction.go:55) 
+[2020-11-13 17:10:48]  [0.99ms]  INSERT INTO "transactions" ("product_id","qty","total_price","buyer_id","created_at","updated_at") VALUES (1,3,45000,1,'2020-11-13 17:10:48','2020-11-13 17:10:48') RETURNING "transactions"."id"  
+[1 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/api/models/Transaction.go:61) 
+[2020-11-13 17:10:48]  [1.53ms]  SELECT * FROM "products"  WHERE (id = 1) LIMIT 1  
+[1 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/api/models/Transaction.go:67) 
+[2020-11-13 17:10:48]  [1.34ms]  SELECT * FROM "users"  WHERE (id = 1) LIMIT 1  
+[1 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/api/models/Transaction.go:71) 
+[2020-11-13 17:10:48]  [0.93ms]  UPDATE "products" SET "available_stock" = 97, "updated_at" = '2020-11-13 17:10:48'  WHERE (id = 1)  
+[1 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/api/models/Transaction.go:76) 
+[2020-11-13 17:10:48]  [1.29ms]  SELECT * FROM "products"  WHERE (id = 1) LIMIT 1  
+[1 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/api/models/Transaction.go:81) 
+[2020-11-13 17:10:48]  [0.89ms]  SELECT * FROM "users"  WHERE (id = 1) LIMIT 1  
+[1 rows affected or returned ] 
+--- PASS: TestCreateTransaction (1.25s)
+=== RUN   TestGetTransactions
+2020/11/13 17:10:48 Successfully refreshed tables
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/controllertests/controller_test.go:237) 
+[2020-11-13 17:10:48]  [2.51ms]  INSERT INTO "users" ("nickname","email","password","created_at","updated_at") VALUES ('Yongwoo Grid','yongwoo@gmail.com','.NW','2020-11-13 17:10:48','2020-11-13 17:10:48') RETURNING "users"."id"  
+[1 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/controllertests/controller_test.go:243) 
+[2020-11-13 17:10:48]  [1.55ms]  INSERT INTO "products" ("product_name","product_description","available_stock","price","seller_id","created_at","updated_at") VALUES ('Oreo Kelapa','Oreo Kelapa taste',100,15000,1,'2020-11-13 17:10:48','2020-11-13 17:10:48') RETURNING "products"."id"  
+[1 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/controllertests/controller_test.go:247) 
+[2020-11-13 17:10:48]  [1.69ms]  INSERT INTO "transactions" ("product_id","qty","total_price","buyer_id","created_at","updated_at") VALUES (1,3,45000,1,'2020-11-13 17:10:48','2020-11-13 17:10:48') RETURNING "transactions"."id"  
+[1 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/controllertests/controller_test.go:237) 
+[2020-11-13 17:10:48]  [1.21ms]  INSERT INTO "users" ("nickname","email","password","created_at","updated_at") VALUES ('Yura Ann','yura@gmail.com','.ky.rszjNn3w3YYGJFXdMwKLbv7EQRM2','2020-11-13 17:10:48','2020-11-13 17:10:48') RETURNING "users"."id"  
+[1 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/controllertests/controller_test.go:243) 
+[2020-11-13 17:10:48]  [0.90ms]  INSERT INTO "products" ("product_name","product_description","available_stock","price","seller_id","created_at","updated_at") VALUES ('Oreo Kelapa Muda','Oreo Kelapa Muda taste',100,15000,2,'2020-11-13 17:10:48','2020-11-13 17:10:48') RETURNING "products"."id"  
+[1 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/controllertests/controller_test.go:247) 
+[2020-11-13 17:10:49]  [1.17ms]  INSERT INTO "transactions" ("product_id","qty","total_price","buyer_id","created_at","updated_at") VALUES (2,3,45000,2,'2020-11-13 17:10:49','2020-11-13 17:10:49') RETURNING "transactions"."id"  
+[1 rows affected or returned ] 
+2020/11/13 17:10:49 seedAllTable routine OK !!!
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/api/models/Transaction.go:92) 
+[2020-11-13 17:10:49]  [1.14ms]  SELECT * FROM "transactions"   LIMIT 100  
+[2 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/api/models/Transaction.go:98) 
+[2020-11-13 17:10:49]  [1.37ms]  SELECT * FROM "users"  WHERE (id = 1) LIMIT 1  
+[1 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/api/models/Transaction.go:98) 
+[2020-11-13 17:10:49]  [1.23ms]  SELECT * FROM "users"  WHERE (id = 2) LIMIT 1  
+[1 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/api/models/Transaction.go:104) 
+[2020-11-13 17:10:49]  [0.93ms]  SELECT * FROM "products"  WHERE (id = 1) LIMIT 1  
+[1 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/api/models/Transaction.go:104) 
+[2020-11-13 17:10:49]  [0.80ms]  SELECT * FROM "products"  WHERE (id = 2) LIMIT 1  
+[1 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/api/models/Transaction.go:111) 
+[2020-11-13 17:10:49]  [0.76ms]  SELECT * FROM "users"  WHERE (id = 1) LIMIT 1  
+[1 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/api/models/Transaction.go:111) 
+[2020-11-13 17:10:49]  [0.81ms]  SELECT * FROM "users"  WHERE (id = 2) LIMIT 1  
+[1 rows affected or returned ] 
+--- PASS: TestGetTransactions (0.76s)
+=== RUN   TestGetTransactionByID
+2020/11/13 17:10:49 Successfully refreshed tables
+2020/11/13 17:10:49 Successfully refreshed tables
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/controllertests/controller_test.go:160) 
+[2020-11-13 17:10:50]  [2.20ms]  INSERT INTO "users" ("nickname","email","password","created_at","updated_at") VALUES ('Faker Phil','faker@gmail.com','.g.waJgYPQSf0UDMXWEgrzUPGG5IhYlJG.','2020-11-13 17:10:50','2020-11-13 17:10:50') RETURNING "users"."id"  
+[1 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/controllertests/controller_test.go:171) 
+[2020-11-13 17:10:50]  [1.97ms]  INSERT INTO "products" ("product_name","product_description","available_stock","price","seller_id","created_at","updated_at") VALUES ('Oreo Kelapa','Oreo Kelapa taste',100,15000,1,'2020-11-13 17:10:50','2020-11-13 17:10:50') RETURNING "products"."id"  
+[1 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/controllertests/controller_test.go:181) 
+[2020-11-13 17:10:50]  [1.87ms]  INSERT INTO "transactions" ("product_id","qty","total_price","buyer_id","created_at","updated_at") VALUES (1,3,45000,1,'2020-11-13 17:10:50','2020-11-13 17:10:50') RETURNING "transactions"."id"  
+[1 rows affected or returned ] 
+2020/11/13 17:10:50 seedOneAllTable routine OK !!!
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/api/models/Transaction.go:122) 
+[2020-11-13 17:10:50]  [1.38ms]  SELECT * FROM "transactions"  WHERE (id = 1) LIMIT 1  
+[1 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/api/models/Transaction.go:127) 
+[2020-11-13 17:10:50]  [1.01ms]  SELECT * FROM "users"  WHERE (id = 1) LIMIT 1  
+[1 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/api/models/Transaction.go:132) 
+[2020-11-13 17:10:50]  [0.78ms]  SELECT * FROM "products"  WHERE (id = 1) LIMIT 1  
+[1 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/api/models/Transaction.go:137) 
+[2020-11-13 17:10:50]  [0.62ms]  SELECT * FROM "users"  WHERE (id = 1) LIMIT 1  
+[1 rows affected or returned ] 
+--- PASS: TestGetTransactionByID (1.05s)
+=== RUN   TestUpdateTransaction
+2020/11/13 17:10:50 Successfully refreshed tables
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/controllertests/controller_test.go:237) 
+[2020-11-13 17:10:50]  [3.55ms]  INSERT INTO "users" ("nickname","email","password","created_at","updated_at") VALUES ('Yongwoo Grid','yongwoo@gmail.com','','2020-11-13 17:10:50','2020-11-13 17:10:50') RETURNING "users"."id"  
+[1 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/controllertests/controller_test.go:243) 
+[2020-11-13 17:10:50]  [1.82ms]  INSERT INTO "products" ("product_name","product_description","available_stock","price","seller_id","created_at","updated_at") VALUES ('Oreo Kelapa','Oreo Kelapa taste',100,15000,1,'2020-11-13 17:10:50','2020-11-13 17:10:50') RETURNING "products"."id"  
+[1 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/controllertests/controller_test.go:247) 
+[2020-11-13 17:10:50]  [1.72ms]  INSERT INTO "transactions" ("product_id","qty","total_price","buyer_id","created_at","updated_at") VALUES (1,3,45000,1,'2020-11-13 17:10:50','2020-11-13 17:10:50') RETURNING "transactions"."id"  
+[1 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/controllertests/controller_test.go:237) 
+[2020-11-13 17:10:50]  [1.16ms]  INSERT INTO "users" ("nickname","email","password","created_at","updated_at") VALUES ('Yura Ann','yura@gmail.com','.UenlEN8h2/h5WeWMuWp.xUbMN4.UsMu','2020-11-13 17:10:50','2020-11-13 17:10:50') RETURNING "users"."id"  
+[1 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/controllertests/controller_test.go:243) 
+[2020-11-13 17:10:50]  [1.03ms]  INSERT INTO "products" ("product_name","product_description","available_stock","price","seller_id","created_at","updated_at") VALUES ('Oreo Kelapa Muda','Oreo Kelapa Muda taste',100,15000,2,'2020-11-13 17:10:50','2020-11-13 17:10:50') RETURNING "products"."id"  
+[1 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/controllertests/controller_test.go:247) 
+[2020-11-13 17:10:50]  [1.02ms]  INSERT INTO "transactions" ("product_id","qty","total_price","buyer_id","created_at","updated_at") VALUES (2,3,45000,2,'2020-11-13 17:10:50','2020-11-13 17:10:50') RETURNING "transactions"."id"  
+[1 rows affected or returned ] 
+2020/11/13 17:10:50 seedAllTable routine OK !!!
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/api/controllers/login_controllers.go:49) 
+[2020-11-13 17:10:50]  [1.17ms]  SELECT * FROM "users"  WHERE (email = 'yongwoo@gmail.com') LIMIT 1  
+[1 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/api/controllers/transaction_controllers.go:124) 
+[2020-11-13 17:10:50]  [1.10ms]  SELECT * FROM "transactions"  WHERE (id = 1) LIMIT 1  
+[1 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/api/models/Transaction.go:191) 
+[2020-11-13 17:10:50]  [0.69ms]  UPDATE "transactions" SET "product_id" = 1, "qty" = 3, "total_price" = 45000, "updated_at" = '2020-11-13 17:10:50'  WHERE (id = 1)  
+[1 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/api/models/Transaction.go:202) 
+[2020-11-13 17:10:50]  [0.99ms]  SELECT * FROM "users"  WHERE (id = 1) LIMIT 1  
+[1 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/api/models/Transaction.go:207) 
+[2020-11-13 17:10:50]  [0.93ms]  SELECT * FROM "products"  WHERE (id = 1) LIMIT 1  
+[1 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/api/models/Transaction.go:212) 
+[2020-11-13 17:10:50]  [1.19ms]  SELECT * FROM "users"  WHERE (id = 1) LIMIT 1  
+[1 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/api/controllers/transaction_controllers.go:124) 
+[2020-11-13 17:10:50]  [1.33ms]  SELECT * FROM "transactions"  WHERE (id = 1) LIMIT 1  
+[1 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/api/controllers/transaction_controllers.go:124) 
+[2020-11-13 17:10:50]  [0.95ms]  SELECT * FROM "transactions"  WHERE (id = 1) LIMIT 1  
+[1 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/api/controllers/transaction_controllers.go:124) 
+[2020-11-13 17:10:50]  [0.84ms]  SELECT * FROM "transactions"  WHERE (id = 1) LIMIT 1  
+[1 rows affected or returned ] 
+--- PASS: TestUpdateTransaction (0.85s)
+=== RUN   TestDeleteTransaction
+2020/11/13 17:10:51 Successfully refreshed tables
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/controllertests/controller_test.go:237) 
+[2020-11-13 17:10:51]  [1.99ms]  INSERT INTO "users" ("nickname","email","password","created_at","updated_at") VALUES ('Yongwoo Grid','yongwoo@gmail.com','/kOk/1pqvqu8TpCU40Fu/3BVXI9qoxrCADmWR/5mpu','2020-11-13 17:10:51','2020-11-13 17:10:51') RETURNING "users"."id"  
+[1 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/controllertests/controller_test.go:243) 
+[2020-11-13 17:10:51]  [1.79ms]  INSERT INTO "products" ("product_name","product_description","available_stock","price","seller_id","created_at","updated_at") VALUES ('Oreo Kelapa','Oreo Kelapa taste',100,15000,1,'2020-11-13 17:10:51','2020-11-13 17:10:51') RETURNING "products"."id"  
+[1 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/controllertests/controller_test.go:247) 
+[2020-11-13 17:10:51]  [1.65ms]  INSERT INTO "transactions" ("product_id","qty","total_price","buyer_id","created_at","updated_at") VALUES (1,3,45000,1,'2020-11-13 17:10:51','2020-11-13 17:10:51') RETURNING "transactions"."id"  
+[1 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/controllertests/controller_test.go:237) 
+[2020-11-13 17:10:51]  [1.06ms]  INSERT INTO "users" ("nickname","email","password","created_at","updated_at") VALUES ('Yura Ann','yura@gmail.com','..','2020-11-13 17:10:51','2020-11-13 17:10:51') RETURNING "users"."id"  
+[1 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/controllertests/controller_test.go:243) 
+[2020-11-13 17:10:51]  [0.97ms]  INSERT INTO "products" ("product_name","product_description","available_stock","price","seller_id","created_at","updated_at") VALUES ('Oreo Kelapa Muda','Oreo Kelapa Muda taste',100,15000,2,'2020-11-13 17:10:51','2020-11-13 17:10:51') RETURNING "products"."id"  
+[1 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/controllertests/controller_test.go:247) 
+[2020-11-13 17:10:51]  [1.25ms]  INSERT INTO "transactions" ("product_id","qty","total_price","buyer_id","created_at","updated_at") VALUES (2,3,45000,2,'2020-11-13 17:10:51','2020-11-13 17:10:51') RETURNING "transactions"."id"  
+[1 rows affected or returned ] 
+2020/11/13 17:10:51 seedAllTable routine OK !!!
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/api/controllers/login_controllers.go:49) 
+[2020-11-13 17:10:51]  [1.15ms]  SELECT * FROM "users"  WHERE (email = 'yura@gmail.com') LIMIT 1  
+[1 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/api/controllers/transaction_controllers.go:195) 
+[2020-11-13 17:10:51]  [1.40ms]  SELECT * FROM "transactions"  WHERE (id = 2) LIMIT 1  
+[1 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/api/models/Transaction.go:222) 
+[2020-11-13 17:10:51]  [0.72ms]  SELECT * FROM "transactions"  WHERE (id = 2 and Buyer_id = 2) LIMIT 1  
+[1 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/api/models/Transaction.go:222) 
+[2020-11-13 17:10:51]  [0.53ms]  DELETE FROM "transactions"  WHERE (id = 2 and Buyer_id = 2)  
+[1 rows affected or returned ] 
+--- PASS: TestDeleteTransaction (0.80s)
+=== RUN   TestCreateUser
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/controllertests/controller_test.go:72) 
+[2020-11-13 17:10:51]  [9.54ms]  DROP TABLE "users"  
+[0 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/controllertests/controller_test.go:77) 
+[2020-11-13 17:10:51]  [185.01ms]  CREATE TABLE "users" ("id" bigserial,"nickname" varchar(255) NOT NULL UNIQUE,"email" varchar(100) NOT NULL UNIQUE,"password" varchar(100) NOT NULL,"created_at" timestamp with time zone DEFAULT CURRENT_TIMESTAMP,"updated_at" timestamp with time zone DEFAULT CURRENT_TIMESTAMP , PRIMARY KEY ("id"))  
+[0 rows affected or returned ] 
+2020/11/13 17:10:51 Successfully refreshed table
+2020/11/13 17:10:51 refreshUserTable routine OK !!!
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/api/models/User.go:98) 
+[2020-11-13 17:10:52]  [2.27ms]  INSERT INTO "users" ("nickname","email","password","created_at","updated_at") VALUES ('Pet','pet@gmail.com','$.7w1R7x7SgvTbfRnHj/BO.bPQhiGHz0OtRrUkOyREy1W7D4biPc4.','2020-11-13 17:10:51','2020-11-13 17:10:51') RETURNING "users"."id"  
+[1 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/api/models/User.go:98) 
+[2020-11-13 17:10:52]  pq: duplicate key value violates unique constraint "users_email_key" 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/api/models/User.go:98) 
+[2020-11-13 17:10:52]  [1.58ms]  INSERT INTO "users" ("nickname","email","password","created_at","updated_at") VALUES ('Frank','pet@gmail.com','/ycRTYSTxQu9OaTJWHgUpqdxnNC7tWHX/uxKcAn9w1uO','2020-11-13 17:10:52','2020-11-13 17:10:52') RETURNING "users"."id"  
+[0 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/api/models/User.go:98) 
+[2020-11-13 17:10:52]  pq: duplicate key value violates unique constraint "users_nickname_key" 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/api/models/User.go:98) 
+[2020-11-13 17:10:52]  [1.59ms]  INSERT INTO "users" ("nickname","email","password","created_at","updated_at") VALUES ('Pet','grand@gmail.com','','2020-11-13 17:10:52','2020-11-13 17:10:52') RETURNING "users"."id"  
+[0 rows affected or returned ] 
+--- PASS: TestCreateUser (0.57s)
+=== RUN   TestGetUsers
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/controllertests/controller_test.go:72) 
+[2020-11-13 17:10:52]  [16.65ms]  DROP TABLE "users"  
+[0 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/controllertests/controller_test.go:77) 
+[2020-11-13 17:10:52]  [163.23ms]  CREATE TABLE "users" ("id" bigserial,"nickname" varchar(255) NOT NULL UNIQUE,"email" varchar(100) NOT NULL UNIQUE,"password" varchar(100) NOT NULL,"created_at" timestamp with time zone DEFAULT CURRENT_TIMESTAMP,"updated_at" timestamp with time zone DEFAULT CURRENT_TIMESTAMP , PRIMARY KEY ("id"))  
+[0 rows affected or returned ] 
+2020/11/13 17:10:52 Successfully refreshed table
+2020/11/13 17:10:52 refreshUserTable routine OK !!!
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/api/models/User.go:108) 
+[2020-11-13 17:10:52]  [1.03ms]  SELECT * FROM "users"   LIMIT 100  
+[2 rows affected or returned ] 
+--- PASS: TestGetUsers (0.43s)
+=== RUN   TestGetUserByID
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/controllertests/controller_test.go:72) 
+[2020-11-13 17:10:52]  [8.36ms]  DROP TABLE "users"  
+[0 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/controllertests/controller_test.go:77) 
+[2020-11-13 17:10:52]  [174.26ms]  CREATE TABLE "users" ("id" bigserial,"nickname" varchar(255) NOT NULL UNIQUE,"email" varchar(100) NOT NULL UNIQUE,"password" varchar(100) NOT NULL,"created_at" timestamp with time zone DEFAULT CURRENT_TIMESTAMP,"updated_at" timestamp with time zone DEFAULT CURRENT_TIMESTAMP , PRIMARY KEY ("id"))  
+[0 rows affected or returned ] 
+2020/11/13 17:10:52 Successfully refreshed table
+2020/11/13 17:10:52 refreshUserTable routine OK !!!
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/controllertests/controller_test.go:72) 
+[2020-11-13 17:10:52]  [19.04ms]  DROP TABLE "users"  
+[0 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/controllertests/controller_test.go:77) 
+[2020-11-13 17:10:53]  [173.14ms]  CREATE TABLE "users" ("id" bigserial,"nickname" varchar(255) NOT NULL UNIQUE,"email" varchar(100) NOT NULL UNIQUE,"password" varchar(100) NOT NULL,"created_at" timestamp with time zone DEFAULT CURRENT_TIMESTAMP,"updated_at" timestamp with time zone DEFAULT CURRENT_TIMESTAMP , PRIMARY KEY ("id"))  
+[0 rows affected or returned ] 
+2020/11/13 17:10:53 Successfully refreshed table
+2020/11/13 17:10:53 refreshUserTable routine OK !!!
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/controllertests/controller_test.go:99) 
+[2020-11-13 17:10:53]  [2.56ms]  INSERT INTO "users" ("nickname","email","password","created_at","updated_at") VALUES ('Pet','pet@gmail.com','/4k/d/1FIppgXF..necJ3.ca8WDZPZQp5IQ4.Eji.aXXHUEy6','2020-11-13 17:10:53','2020-11-13 17:10:53') RETURNING "users"."id"  
+[1 rows affected or returned ] 
+2020/11/13 17:10:53 seedOneUser routine OK !!!
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/api/models/User.go:117) 
+[2020-11-13 17:10:53]  [1.93ms]  SELECT * FROM "users"  WHERE (id = 1) LIMIT 1  
+[1 rows affected or returned ] 
+--- PASS: TestGetUserByID (0.52s)
+=== RUN   TestUpdateUser
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/controllertests/controller_test.go:72) 
+[2020-11-13 17:10:53]  [7.06ms]  DROP TABLE "users"  
+[0 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/controllertests/controller_test.go:77) 
+[2020-11-13 17:10:53]  [174.76ms]  CREATE TABLE "users" ("id" bigserial,"nickname" varchar(255) NOT NULL UNIQUE,"email" varchar(100) NOT NULL UNIQUE,"password" varchar(100) NOT NULL,"created_at" timestamp with time zone DEFAULT CURRENT_TIMESTAMP,"updated_at" timestamp with time zone DEFAULT CURRENT_TIMESTAMP , PRIMARY KEY ("id"))  
+[0 rows affected or returned ] 
+2020/11/13 17:10:53 Successfully refreshed table
+2020/11/13 17:10:53 refreshUserTable routine OK !!!
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/api/controllers/login_controllers.go:49) 
+[2020-11-13 17:10:53]  [1.11ms]  SELECT * FROM "users"  WHERE (email = 'steven@gmail.com') LIMIT 1  
+[1 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/api/models/User.go:134) 
+[2020-11-13 17:10:53]  [1.04ms]  SELECT * FROM "users"  WHERE (id = 1) LIMIT 1  
+[1 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/api/models/User.go:134) 
+[2020-11-13 17:10:53]  [0.73ms]  UPDATE "users" SET "email" = 'grand@gmail.com', "nickname" = 'Grand', "password" = '.bv8uRwuOinbvmGEu71YIa1afsIS8pIbzqw0YN4m', "updated_at" = '2020-11-13 17:10:53'  WHERE "users"."id" = 1 AND ((id = 1))  
+[1 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/api/models/User.go:146) 
+[2020-11-13 17:10:53]  [1.26ms]  SELECT * FROM "users"  WHERE (id = 1) AND (id = 1) LIMIT 1  
+[1 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/api/models/User.go:134) 
+[2020-11-13 17:10:54]  [1.09ms]  SELECT * FROM "users"  WHERE (id = 1) LIMIT 1  
+[1 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/api/models/User.go:134) 
+[2020-11-13 17:10:54]  pq: duplicate key value violates unique constraint "users_email_key" 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/api/models/User.go:134) 
+[2020-11-13 17:10:54]  [1.01ms]  UPDATE "users" SET "email" = 'kenny@gmail.com', "nickname" = 'Frank', "password" = '/tkXnDxAUhC3.Ww03NQt9Ugq2.nC6tr8QMK97H2z.8w2', "updated_at" = '2020-11-13 17:10:54'  WHERE "users"."id" = 1 AND ((id = 1))  
+[0 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/api/models/User.go:134) 
+[2020-11-13 17:10:54]  [1.12ms]  SELECT * FROM "users"  WHERE (id = 1) LIMIT 1  
+[1 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/api/models/User.go:134) 
+[2020-11-13 17:10:54]  pq: duplicate key value violates unique constraint "users_nickname_key" 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/api/models/User.go:134) 
+[2020-11-13 17:10:54]  [1.33ms]  UPDATE "users" SET "email" = 'grand@gmail.com', "nickname" = 'Kenny Morris', "password" = '.7yFF7nFetbosi/k0LnDKgWvOwgBtoLi', "updated_at" = '2020-11-13 17:10:54'  WHERE "users"."id" = 1 AND ((id = 1))  
+[0 rows affected or returned ] 
+--- PASS: TestUpdateUser (0.93s)
+=== RUN   TestDeleteUser
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/controllertests/controller_test.go:72) 
+[2020-11-13 17:10:54]  [381.26ms]  DROP TABLE "users"  
+[0 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/controllertests/controller_test.go:77) 
+[2020-11-13 17:10:54]  [252.48ms]  CREATE TABLE "users" ("id" bigserial,"nickname" varchar(255) NOT NULL UNIQUE,"email" varchar(100) NOT NULL UNIQUE,"password" varchar(100) NOT NULL,"created_at" timestamp with time zone DEFAULT CURRENT_TIMESTAMP,"updated_at" timestamp with time zone DEFAULT CURRENT_TIMESTAMP , PRIMARY KEY ("id"))  
+[0 rows affected or returned ] 
+2020/11/13 17:10:54 Successfully refreshed table
+2020/11/13 17:10:54 refreshUserTable routine OK !!!
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/api/controllers/login_controllers.go:49) 
+[2020-11-13 17:10:55]  [1.23ms]  SELECT * FROM "users"  WHERE (email = 'steven@gmail.com') LIMIT 1  
+[1 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/api/models/User.go:155) 
+[2020-11-13 17:10:55]  [1.24ms]  SELECT * FROM "users"  WHERE (id = 1) LIMIT 1  
+[1 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/api/models/User.go:155) 
+[2020-11-13 17:10:55]  [1.06ms]  DELETE FROM "users"  WHERE (id = 1)  
+[1 rows affected or returned ] 
+--- PASS: TestDeleteUser (1.08s)
+PASS
+ok  	github.com/bayuajik2403/golang-backend-crud-api/tests/controllertests	14.595s
+We are connected to the postgres database
+2020/11/13 16:50:05 Before calling m.Run() !!!
+=== RUN   TestFindAllProducts
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:117) 
+[2020-11-13 16:50:05]  [61.01ms]  DROP TABLE "products"  
+[0 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:117) 
+[2020-11-13 16:50:05]  [6.11ms]  DROP TABLE "transactions"  
+[0 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:117) 
+[2020-11-13 16:50:05]  [8.60ms]  DROP TABLE "users"  
+[0 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:122) 
+[2020-11-13 16:50:05]  [285.80ms]  CREATE TABLE "users" ("id" bigserial,"nickname" varchar(255) NOT NULL UNIQUE,"email" varchar(100) NOT NULL UNIQUE,"password" varchar(100) NOT NULL,"created_at" timestamp with time zone DEFAULT CURRENT_TIMESTAMP,"updated_at" timestamp with time zone DEFAULT CURRENT_TIMESTAMP , PRIMARY KEY ("id"))  
+[0 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:122) 
+[2020-11-13 16:50:05]  [130.40ms]  CREATE TABLE "products" ("id" bigserial,"product_name" varchar(255) NOT NULL,"product_description" varchar(255) NOT NULL,"available_stock" bigint NOT NULL,"price" bigint NOT NULL,"seller_id" bigint NOT NULL,"created_at" timestamp with time zone DEFAULT CURRENT_TIMESTAMP,"updated_at" timestamp with time zone DEFAULT CURRENT_TIMESTAMP , PRIMARY KEY ("id"))  
+[0 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:122) 
+[2020-11-13 16:50:05]  [62.92ms]  CREATE TABLE "transactions" ("id" bigserial,"product_id" bigint NOT NULL,"qty" bigint NOT NULL,"total_price" bigint NOT NULL,"buyer_id" bigint NOT NULL,"created_at" timestamp with time zone,"updated_at" timestamp with time zone DEFAULT CURRENT_TIMESTAMP , PRIMARY KEY ("id"))  
+[0 rows affected or returned ] 
+2020/11/13 16:50:05 Successfully refreshed tables
+2020/11/13 16:50:05 refreshAllTable routine OK !!!
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:219) 
+[2020-11-13 16:50:06]  [2.28ms]  INSERT INTO "users" ("nickname","email","password","created_at","updated_at") VALUES ('Yongwoo Grid','yongwoo@gmail.com','$/moWvL1Y1zMxz1BszIxxeOutYcoVg7Fq9xf52W/os8wsFkbky2wWu','2020-11-13 16:50:06','2020-11-13 16:50:06') RETURNING "users"."id"  
+[1 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:225) 
+[2020-11-13 16:50:06]  [2.50ms]  INSERT INTO "products" ("product_name","product_description","available_stock","price","seller_id","created_at","updated_at") VALUES ('Oreo Kelapa','Oreo Kelapa taste',100,15000,1,'2020-11-13 16:50:06','2020-11-13 16:50:06') RETURNING "products"."id"  
+[1 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:229) 
+[2020-11-13 16:50:06]  [1.87ms]  INSERT INTO "transactions" ("product_id","qty","total_price","buyer_id","created_at","updated_at") VALUES (1,3,45000,1,'2020-11-13 16:50:06','2020-11-13 16:50:06') RETURNING "transactions"."id"  
+[1 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:219) 
+[2020-11-13 16:50:06]  [1.34ms]  INSERT INTO "users" ("nickname","email","password","created_at","updated_at") VALUES ('Yura Ann','yura@gmail.com','/VDH.vD8BGeD6/pHlOA5RmF33SMUY4f5l7JlGI.UoS','2020-11-13 16:50:06','2020-11-13 16:50:06') RETURNING "users"."id"  
+[1 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:225) 
+[2020-11-13 16:50:06]  [0.84ms]  INSERT INTO "products" ("product_name","product_description","available_stock","price","seller_id","created_at","updated_at") VALUES ('Oreo Kelapa Muda','Oreo Kelapa Muda taste',100,15000,2,'2020-11-13 16:50:06','2020-11-13 16:50:06') RETURNING "products"."id"  
+[1 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:229) 
+[2020-11-13 16:50:06]  [1.18ms]  INSERT INTO "transactions" ("product_id","qty","total_price","buyer_id","created_at","updated_at") VALUES (2,3,45000,2,'2020-11-13 16:50:06','2020-11-13 16:50:06') RETURNING "transactions"."id"  
+[1 rows affected or returned ] 
+2020/11/13 16:50:06 seedAllTable routine OK !!!
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/api/models/Product.go:66) 
+[2020-11-13 16:50:06]  [1.29ms]  SELECT * FROM "products"   LIMIT 100  
+[2 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/api/models/Product.go:72) 
+[2020-11-13 16:50:06]  [1.34ms]  SELECT * FROM "users"  WHERE (id = 1) LIMIT 1  
+[1 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/api/models/Product.go:72) 
+[2020-11-13 16:50:06]  [0.94ms]  SELECT * FROM "users"  WHERE (id = 2) LIMIT 1  
+[1 rows affected or returned ] 
+--- PASS: TestFindAllProducts (0.89s)
+=== RUN   TestSaveProduct
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:117) 
+[2020-11-13 16:50:06]  [16.68ms]  DROP TABLE "products"  
+[0 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:117) 
+[2020-11-13 16:50:06]  [17.70ms]  DROP TABLE "transactions"  
+[0 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:117) 
+[2020-11-13 16:50:06]  [7.88ms]  DROP TABLE "users"  
+[0 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:122) 
+[2020-11-13 16:50:06]  [151.71ms]  CREATE TABLE "users" ("id" bigserial,"nickname" varchar(255) NOT NULL UNIQUE,"email" varchar(100) NOT NULL UNIQUE,"password" varchar(100) NOT NULL,"created_at" timestamp with time zone DEFAULT CURRENT_TIMESTAMP,"updated_at" timestamp with time zone DEFAULT CURRENT_TIMESTAMP , PRIMARY KEY ("id"))  
+[0 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:122) 
+[2020-11-13 16:50:06]  [152.54ms]  CREATE TABLE "products" ("id" bigserial,"product_name" varchar(255) NOT NULL,"product_description" varchar(255) NOT NULL,"available_stock" bigint NOT NULL,"price" bigint NOT NULL,"seller_id" bigint NOT NULL,"created_at" timestamp with time zone DEFAULT CURRENT_TIMESTAMP,"updated_at" timestamp with time zone DEFAULT CURRENT_TIMESTAMP , PRIMARY KEY ("id"))  
+[0 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:122) 
+[2020-11-13 16:50:06]  [62.54ms]  CREATE TABLE "transactions" ("id" bigserial,"product_id" bigint NOT NULL,"qty" bigint NOT NULL,"total_price" bigint NOT NULL,"buyer_id" bigint NOT NULL,"created_at" timestamp with time zone,"updated_at" timestamp with time zone DEFAULT CURRENT_TIMESTAMP , PRIMARY KEY ("id"))  
+[0 rows affected or returned ] 
+2020/11/13 16:50:06 Successfully refreshed tables
+2020/11/13 16:50:06 refreshAllTable routine OK !!!
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:54) 
+[2020-11-13 16:50:06]  [8.06ms]  DROP TABLE "users"  
+[0 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:59) 
+[2020-11-13 16:50:06]  [203.78ms]  CREATE TABLE "users" ("id" bigserial,"nickname" varchar(255) NOT NULL UNIQUE,"email" varchar(100) NOT NULL UNIQUE,"password" varchar(100) NOT NULL,"created_at" timestamp with time zone DEFAULT CURRENT_TIMESTAMP,"updated_at" timestamp with time zone DEFAULT CURRENT_TIMESTAMP , PRIMARY KEY ("id"))  
+[0 rows affected or returned ] 
+2020/11/13 16:50:06 Successfully refreshed table
+2020/11/13 16:50:06 refreshUserTable routine OK !!!
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:78) 
+[2020-11-13 16:50:07]  [2.28ms]  INSERT INTO "users" ("nickname","email","password","created_at","updated_at") VALUES ('Khan','khan@gmail.com','/0VYLJlx8JZgaalQjtFIe5xKXAQqt35VwPRIQoLZzx2oWvmwP3zS','2020-11-13 16:50:07','2020-11-13 16:50:07') RETURNING "users"."id"  
+[1 rows affected or returned ] 
+2020/11/13 16:50:07 seedOneUser routine OK !!!
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/api/models/Product.go:50) 
+[2020-11-13 16:50:07]  [1.72ms]  INSERT INTO "products" ("id","product_name","product_description","available_stock","price","seller_id","created_at","updated_at") VALUES (1,'Oreo Kelapa','Oreo Kelapa taste',100,15000,1,'2020-11-13 16:50:07','2020-11-13 16:50:07') RETURNING "products"."id"  
+[1 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/api/models/Product.go:55) 
+[2020-11-13 16:50:07]  [1.29ms]  SELECT * FROM "users"  WHERE (id = 1) LIMIT 1  
+[1 rows affected or returned ] 
+--- PASS: TestSaveProduct (0.82s)
+=== RUN   TestGetProductByID
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:117) 
+[2020-11-13 16:50:07]  [8.41ms]  DROP TABLE "products"  
+[0 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:117) 
+[2020-11-13 16:50:07]  [7.26ms]  DROP TABLE "transactions"  
+[0 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:117) 
+[2020-11-13 16:50:07]  [8.79ms]  DROP TABLE "users"  
+[0 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:122) 
+[2020-11-13 16:50:07]  [207.21ms]  CREATE TABLE "users" ("id" bigserial,"nickname" varchar(255) NOT NULL UNIQUE,"email" varchar(100) NOT NULL UNIQUE,"password" varchar(100) NOT NULL,"created_at" timestamp with time zone DEFAULT CURRENT_TIMESTAMP,"updated_at" timestamp with time zone DEFAULT CURRENT_TIMESTAMP , PRIMARY KEY ("id"))  
+[0 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:122) 
+[2020-11-13 16:50:07]  [130.87ms]  CREATE TABLE "products" ("id" bigserial,"product_name" varchar(255) NOT NULL,"product_description" varchar(255) NOT NULL,"available_stock" bigint NOT NULL,"price" bigint NOT NULL,"seller_id" bigint NOT NULL,"created_at" timestamp with time zone DEFAULT CURRENT_TIMESTAMP,"updated_at" timestamp with time zone DEFAULT CURRENT_TIMESTAMP , PRIMARY KEY ("id"))  
+[0 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:122) 
+[2020-11-13 16:50:07]  [63.28ms]  CREATE TABLE "transactions" ("id" bigserial,"product_id" bigint NOT NULL,"qty" bigint NOT NULL,"total_price" bigint NOT NULL,"buyer_id" bigint NOT NULL,"created_at" timestamp with time zone,"updated_at" timestamp with time zone DEFAULT CURRENT_TIMESTAMP , PRIMARY KEY ("id"))  
+[0 rows affected or returned ] 
+2020/11/13 16:50:07 Successfully refreshed tables
+2020/11/13 16:50:07 refreshAllTable routine OK !!!
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:117) 
+[2020-11-13 16:50:07]  [64.26ms]  DROP TABLE "products"  
+[0 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:117) 
+[2020-11-13 16:50:07]  [63.34ms]  DROP TABLE "transactions"  
+[0 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:117) 
+[2020-11-13 16:50:07]  [7.27ms]  DROP TABLE "users"  
+[0 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:122) 
+[2020-11-13 16:50:07]  [196.10ms]  CREATE TABLE "users" ("id" bigserial,"nickname" varchar(255) NOT NULL UNIQUE,"email" varchar(100) NOT NULL UNIQUE,"password" varchar(100) NOT NULL,"created_at" timestamp with time zone DEFAULT CURRENT_TIMESTAMP,"updated_at" timestamp with time zone DEFAULT CURRENT_TIMESTAMP , PRIMARY KEY ("id"))  
+[0 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:122) 
+[2020-11-13 16:50:07]  [141.01ms]  CREATE TABLE "products" ("id" bigserial,"product_name" varchar(255) NOT NULL,"product_description" varchar(255) NOT NULL,"available_stock" bigint NOT NULL,"price" bigint NOT NULL,"seller_id" bigint NOT NULL,"created_at" timestamp with time zone DEFAULT CURRENT_TIMESTAMP,"updated_at" timestamp with time zone DEFAULT CURRENT_TIMESTAMP , PRIMARY KEY ("id"))  
+[0 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:122) 
+[2020-11-13 16:50:08]  [84.79ms]  CREATE TABLE "transactions" ("id" bigserial,"product_id" bigint NOT NULL,"qty" bigint NOT NULL,"total_price" bigint NOT NULL,"buyer_id" bigint NOT NULL,"created_at" timestamp with time zone,"updated_at" timestamp with time zone DEFAULT CURRENT_TIMESTAMP , PRIMARY KEY ("id"))  
+[0 rows affected or returned ] 
+2020/11/13 16:50:08 Successfully refreshed tables
+2020/11/13 16:50:08 refreshAllTable routine OK !!!
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:142) 
+[2020-11-13 16:50:08]  [2.02ms]  INSERT INTO "users" ("nickname","email","password","created_at","updated_at") VALUES ('Faker Phil','faker@gmail.com','.xEsaBkNFg0Wiaioh8.HRs1sN7Na20qC','2020-11-13 16:50:08','2020-11-13 16:50:08') RETURNING "users"."id"  
+[1 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:153) 
+[2020-11-13 16:50:08]  [1.79ms]  INSERT INTO "products" ("product_name","product_description","available_stock","price","seller_id","created_at","updated_at") VALUES ('Oreo Kelapa','Oreo Kelapa taste',100,15000,1,'2020-11-13 16:50:08','2020-11-13 16:50:08') RETURNING "products"."id"  
+[1 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:163) 
+[2020-11-13 16:50:08]  [1.80ms]  INSERT INTO "transactions" ("product_id","qty","total_price","buyer_id","created_at","updated_at") VALUES (1,3,45000,1,'2020-11-13 16:50:08','2020-11-13 16:50:08') RETURNING "transactions"."id"  
+[1 rows affected or returned ] 
+2020/11/13 16:50:08 seedOneAllTable routine OK !!!
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/api/models/Product.go:83) 
+[2020-11-13 16:50:08]  [1.36ms]  SELECT * FROM "products"  WHERE (id = 1) LIMIT 1  
+[1 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/api/models/Product.go:88) 
+[2020-11-13 16:50:08]  [0.92ms]  SELECT * FROM "users"  WHERE (id = 1) LIMIT 1  
+[1 rows affected or returned ] 
+--- PASS: TestGetProductByID (1.18s)
+=== RUN   TestGetProductByUser
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:117) 
+[2020-11-13 16:50:08]  [17.98ms]  DROP TABLE "products"  
+[0 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:117) 
+[2020-11-13 16:50:08]  [6.54ms]  DROP TABLE "transactions"  
+[0 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:117) 
+[2020-11-13 16:50:08]  [8.55ms]  DROP TABLE "users"  
+[0 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:122) 
+[2020-11-13 16:50:08]  [151.92ms]  CREATE TABLE "users" ("id" bigserial,"nickname" varchar(255) NOT NULL UNIQUE,"email" varchar(100) NOT NULL UNIQUE,"password" varchar(100) NOT NULL,"created_at" timestamp with time zone DEFAULT CURRENT_TIMESTAMP,"updated_at" timestamp with time zone DEFAULT CURRENT_TIMESTAMP , PRIMARY KEY ("id"))  
+[0 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:122) 
+[2020-11-13 16:50:08]  [130.45ms]  CREATE TABLE "products" ("id" bigserial,"product_name" varchar(255) NOT NULL,"product_description" varchar(255) NOT NULL,"available_stock" bigint NOT NULL,"price" bigint NOT NULL,"seller_id" bigint NOT NULL,"created_at" timestamp with time zone DEFAULT CURRENT_TIMESTAMP,"updated_at" timestamp with time zone DEFAULT CURRENT_TIMESTAMP , PRIMARY KEY ("id"))  
+[0 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:122) 
+[2020-11-13 16:50:08]  [74.61ms]  CREATE TABLE "transactions" ("id" bigserial,"product_id" bigint NOT NULL,"qty" bigint NOT NULL,"total_price" bigint NOT NULL,"buyer_id" bigint NOT NULL,"created_at" timestamp with time zone,"updated_at" timestamp with time zone DEFAULT CURRENT_TIMESTAMP , PRIMARY KEY ("id"))  
+[0 rows affected or returned ] 
+2020/11/13 16:50:08 Successfully refreshed tables
+2020/11/13 16:50:08 refreshAllTable routine OK !!!
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:117) 
+[2020-11-13 16:50:08]  [19.43ms]  DROP TABLE "products"  
+[0 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:117) 
+[2020-11-13 16:50:08]  [7.65ms]  DROP TABLE "transactions"  
+[0 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:117) 
+[2020-11-13 16:50:08]  [8.25ms]  DROP TABLE "users"  
+[0 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:122) 
+[2020-11-13 16:50:08]  [196.58ms]  CREATE TABLE "users" ("id" bigserial,"nickname" varchar(255) NOT NULL UNIQUE,"email" varchar(100) NOT NULL UNIQUE,"password" varchar(100) NOT NULL,"created_at" timestamp with time zone DEFAULT CURRENT_TIMESTAMP,"updated_at" timestamp with time zone DEFAULT CURRENT_TIMESTAMP , PRIMARY KEY ("id"))  
+[0 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:122) 
+[2020-11-13 16:50:09]  [175.52ms]  CREATE TABLE "products" ("id" bigserial,"product_name" varchar(255) NOT NULL,"product_description" varchar(255) NOT NULL,"available_stock" bigint NOT NULL,"price" bigint NOT NULL,"seller_id" bigint NOT NULL,"created_at" timestamp with time zone DEFAULT CURRENT_TIMESTAMP,"updated_at" timestamp with time zone DEFAULT CURRENT_TIMESTAMP , PRIMARY KEY ("id"))  
+[0 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:122) 
+[2020-11-13 16:50:09]  [65.52ms]  CREATE TABLE "transactions" ("id" bigserial,"product_id" bigint NOT NULL,"qty" bigint NOT NULL,"total_price" bigint NOT NULL,"buyer_id" bigint NOT NULL,"created_at" timestamp with time zone,"updated_at" timestamp with time zone DEFAULT CURRENT_TIMESTAMP , PRIMARY KEY ("id"))  
+[0 rows affected or returned ] 
+2020/11/13 16:50:09 Successfully refreshed tables
+2020/11/13 16:50:09 refreshAllTable routine OK !!!
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:142) 
+[2020-11-13 16:50:09]  [2.30ms]  INSERT INTO "users" ("nickname","email","password","created_at","updated_at") VALUES ('Faker Phil','faker@gmail.com','','2020-11-13 16:50:09','2020-11-13 16:50:09') RETURNING "users"."id"  
+[1 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:153) 
+[2020-11-13 16:50:09]  [1.80ms]  INSERT INTO "products" ("product_name","product_description","available_stock","price","seller_id","created_at","updated_at") VALUES ('Oreo Kelapa','Oreo Kelapa taste',100,15000,1,'2020-11-13 16:50:09','2020-11-13 16:50:09') RETURNING "products"."id"  
+[1 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:163) 
+[2020-11-13 16:50:09]  [1.90ms]  INSERT INTO "transactions" ("product_id","qty","total_price","buyer_id","created_at","updated_at") VALUES (1,3,45000,1,'2020-11-13 16:50:09','2020-11-13 16:50:09') RETURNING "transactions"."id"  
+[1 rows affected or returned ] 
+2020/11/13 16:50:09 seedOneAllTable routine OK !!!
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/api/models/Product.go:83) 
+[2020-11-13 16:50:09]  [1.98ms]  SELECT * FROM "products"  WHERE "products"."id" = 1 AND ((id = 1)) LIMIT 1  
+[1 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/api/models/Product.go:88) 
+[2020-11-13 16:50:09]  [1.86ms]  SELECT * FROM "users"  WHERE "users"."id" = 1 AND ((id = 1)) LIMIT 1  
+[1 rows affected or returned ] 
+--- PASS: TestGetProductByUser (1.07s)
+=== RUN   TestUpdateAProduct
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:117) 
+[2020-11-13 16:50:09]  [15.23ms]  DROP TABLE "products"  
+[0 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:117) 
+[2020-11-13 16:50:09]  [8.25ms]  DROP TABLE "transactions"  
+[0 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:117) 
+[2020-11-13 16:50:09]  [8.82ms]  DROP TABLE "users"  
+[0 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:122) 
+[2020-11-13 16:50:09]  [230.32ms]  CREATE TABLE "users" ("id" bigserial,"nickname" varchar(255) NOT NULL UNIQUE,"email" varchar(100) NOT NULL UNIQUE,"password" varchar(100) NOT NULL,"created_at" timestamp with time zone DEFAULT CURRENT_TIMESTAMP,"updated_at" timestamp with time zone DEFAULT CURRENT_TIMESTAMP , PRIMARY KEY ("id"))  
+[0 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:122) 
+[2020-11-13 16:50:09]  [107.07ms]  CREATE TABLE "products" ("id" bigserial,"product_name" varchar(255) NOT NULL,"product_description" varchar(255) NOT NULL,"available_stock" bigint NOT NULL,"price" bigint NOT NULL,"seller_id" bigint NOT NULL,"created_at" timestamp with time zone DEFAULT CURRENT_TIMESTAMP,"updated_at" timestamp with time zone DEFAULT CURRENT_TIMESTAMP , PRIMARY KEY ("id"))  
+[0 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:122) 
+[2020-11-13 16:50:09]  [73.90ms]  CREATE TABLE "transactions" ("id" bigserial,"product_id" bigint NOT NULL,"qty" bigint NOT NULL,"total_price" bigint NOT NULL,"buyer_id" bigint NOT NULL,"created_at" timestamp with time zone,"updated_at" timestamp with time zone DEFAULT CURRENT_TIMESTAMP , PRIMARY KEY ("id"))  
+[0 rows affected or returned ] 
+2020/11/13 16:50:09 Successfully refreshed tables
+2020/11/13 16:50:09 refreshAllTable routine OK !!!
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:117) 
+[2020-11-13 16:50:09]  [8.70ms]  DROP TABLE "products"  
+[0 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:117) 
+[2020-11-13 16:50:09]  [7.97ms]  DROP TABLE "transactions"  
+[0 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:117) 
+[2020-11-13 16:50:09]  [7.85ms]  DROP TABLE "users"  
+[0 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:122) 
+[2020-11-13 16:50:10]  [384.99ms]  CREATE TABLE "users" ("id" bigserial,"nickname" varchar(255) NOT NULL UNIQUE,"email" varchar(100) NOT NULL UNIQUE,"password" varchar(100) NOT NULL,"created_at" timestamp with time zone DEFAULT CURRENT_TIMESTAMP,"updated_at" timestamp with time zone DEFAULT CURRENT_TIMESTAMP , PRIMARY KEY ("id"))  
+[0 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:122) 
+[2020-11-13 16:50:10]  [184.95ms]  CREATE TABLE "products" ("id" bigserial,"product_name" varchar(255) NOT NULL,"product_description" varchar(255) NOT NULL,"available_stock" bigint NOT NULL,"price" bigint NOT NULL,"seller_id" bigint NOT NULL,"created_at" timestamp with time zone DEFAULT CURRENT_TIMESTAMP,"updated_at" timestamp with time zone DEFAULT CURRENT_TIMESTAMP , PRIMARY KEY ("id"))  
+[0 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:122) 
+[2020-11-13 16:50:10]  [85.66ms]  CREATE TABLE "transactions" ("id" bigserial,"product_id" bigint NOT NULL,"qty" bigint NOT NULL,"total_price" bigint NOT NULL,"buyer_id" bigint NOT NULL,"created_at" timestamp with time zone,"updated_at" timestamp with time zone DEFAULT CURRENT_TIMESTAMP , PRIMARY KEY ("id"))  
+[0 rows affected or returned ] 
+2020/11/13 16:50:10 Successfully refreshed tables
+2020/11/13 16:50:10 refreshAllTable routine OK !!!
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:142) 
+[2020-11-13 16:50:10]  [1.98ms]  INSERT INTO "users" ("nickname","email","password","created_at","updated_at") VALUES ('Faker Phil','faker@gmail.com','.D7YOn7g1VK2RwJRU.1rri8ajMqnyEDN9Bxm','2020-11-13 16:50:10','2020-11-13 16:50:10') RETURNING "users"."id"  
+[1 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:153) 
+[2020-11-13 16:50:10]  [1.85ms]  INSERT INTO "products" ("product_name","product_description","available_stock","price","seller_id","created_at","updated_at") VALUES ('Oreo Kelapa','Oreo Kelapa taste',100,15000,1,'2020-11-13 16:50:10','2020-11-13 16:50:10') RETURNING "products"."id"  
+[1 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:163) 
+[2020-11-13 16:50:10]  [1.75ms]  INSERT INTO "transactions" ("product_id","qty","total_price","buyer_id","created_at","updated_at") VALUES (1,3,45000,1,'2020-11-13 16:50:10','2020-11-13 16:50:10') RETURNING "transactions"."id"  
+[1 rows affected or returned ] 
+2020/11/13 16:50:10 seedOneAllTable routine OK !!!
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/api/models/Product.go:118) 
+[2020-11-13 16:50:10]  [1.06ms]  UPDATE "products" SET "available_stock" = 120, "price" = 15500, "product_description" = 'Oreo Kelapa Update taste', "product_name" = 'Oreo Kelapa Update', "updated_at" = '2020-11-13 16:50:10'  WHERE (id = 1)  
+[1 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/api/models/Product.go:123) 
+[2020-11-13 16:50:10]  [1.83ms]  SELECT * FROM "users"  WHERE (id = 1) LIMIT 1  
+[1 rows affected or returned ] 
+--- PASS: TestUpdateAProduct (1.32s)
+=== RUN   TestDeleteAProduct
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:117) 
+[2020-11-13 16:50:10]  [17.75ms]  DROP TABLE "products"  
+[0 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:117) 
+[2020-11-13 16:50:10]  [7.12ms]  DROP TABLE "transactions"  
+[0 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:117) 
+[2020-11-13 16:50:10]  [7.78ms]  DROP TABLE "users"  
+[0 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:122) 
+[2020-11-13 16:50:10]  [153.93ms]  CREATE TABLE "users" ("id" bigserial,"nickname" varchar(255) NOT NULL UNIQUE,"email" varchar(100) NOT NULL UNIQUE,"password" varchar(100) NOT NULL,"created_at" timestamp with time zone DEFAULT CURRENT_TIMESTAMP,"updated_at" timestamp with time zone DEFAULT CURRENT_TIMESTAMP , PRIMARY KEY ("id"))  
+[0 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:122) 
+[2020-11-13 16:50:10]  [139.39ms]  CREATE TABLE "products" ("id" bigserial,"product_name" varchar(255) NOT NULL,"product_description" varchar(255) NOT NULL,"available_stock" bigint NOT NULL,"price" bigint NOT NULL,"seller_id" bigint NOT NULL,"created_at" timestamp with time zone DEFAULT CURRENT_TIMESTAMP,"updated_at" timestamp with time zone DEFAULT CURRENT_TIMESTAMP , PRIMARY KEY ("id"))  
+[0 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:122) 
+[2020-11-13 16:50:11]  [97.07ms]  CREATE TABLE "transactions" ("id" bigserial,"product_id" bigint NOT NULL,"qty" bigint NOT NULL,"total_price" bigint NOT NULL,"buyer_id" bigint NOT NULL,"created_at" timestamp with time zone,"updated_at" timestamp with time zone DEFAULT CURRENT_TIMESTAMP , PRIMARY KEY ("id"))  
+[0 rows affected or returned ] 
+2020/11/13 16:50:11 Successfully refreshed tables
+2020/11/13 16:50:11 refreshAllTable routine OK !!!
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:117) 
+[2020-11-13 16:50:11]  [9.71ms]  DROP TABLE "products"  
+[0 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:117) 
+[2020-11-13 16:50:11]  [7.22ms]  DROP TABLE "transactions"  
+[0 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:117) 
+[2020-11-13 16:50:11]  [8.26ms]  DROP TABLE "users"  
+[0 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:122) 
+[2020-11-13 16:50:11]  [174.50ms]  CREATE TABLE "users" ("id" bigserial,"nickname" varchar(255) NOT NULL UNIQUE,"email" varchar(100) NOT NULL UNIQUE,"password" varchar(100) NOT NULL,"created_at" timestamp with time zone DEFAULT CURRENT_TIMESTAMP,"updated_at" timestamp with time zone DEFAULT CURRENT_TIMESTAMP , PRIMARY KEY ("id"))  
+[0 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:122) 
+[2020-11-13 16:50:11]  [129.61ms]  CREATE TABLE "products" ("id" bigserial,"product_name" varchar(255) NOT NULL,"product_description" varchar(255) NOT NULL,"available_stock" bigint NOT NULL,"price" bigint NOT NULL,"seller_id" bigint NOT NULL,"created_at" timestamp with time zone DEFAULT CURRENT_TIMESTAMP,"updated_at" timestamp with time zone DEFAULT CURRENT_TIMESTAMP , PRIMARY KEY ("id"))  
+[0 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:122) 
+[2020-11-13 16:50:11]  [74.52ms]  CREATE TABLE "transactions" ("id" bigserial,"product_id" bigint NOT NULL,"qty" bigint NOT NULL,"total_price" bigint NOT NULL,"buyer_id" bigint NOT NULL,"created_at" timestamp with time zone,"updated_at" timestamp with time zone DEFAULT CURRENT_TIMESTAMP , PRIMARY KEY ("id"))  
+[0 rows affected or returned ] 
+2020/11/13 16:50:11 Successfully refreshed tables
+2020/11/13 16:50:11 refreshAllTable routine OK !!!
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:142) 
+[2020-11-13 16:50:11]  [2.52ms]  INSERT INTO "users" ("nickname","email","password","created_at","updated_at") VALUES ('Faker Phil','faker@gmail.com','.','2020-11-13 16:50:11','2020-11-13 16:50:11') RETURNING "users"."id"  
+[1 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:153) 
+[2020-11-13 16:50:11]  [1.97ms]  INSERT INTO "products" ("product_name","product_description","available_stock","price","seller_id","created_at","updated_at") VALUES ('Oreo Kelapa','Oreo Kelapa taste',100,15000,1,'2020-11-13 16:50:11','2020-11-13 16:50:11') RETURNING "products"."id"  
+[1 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:163) 
+[2020-11-13 16:50:11]  [1.81ms]  INSERT INTO "transactions" ("product_id","qty","total_price","buyer_id","created_at","updated_at") VALUES (1,3,45000,1,'2020-11-13 16:50:11','2020-11-13 16:50:11') RETURNING "transactions"."id"  
+[1 rows affected or returned ] 
+2020/11/13 16:50:11 seedOneAllTable routine OK !!!
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/api/models/Product.go:133) 
+[2020-11-13 16:50:11]  [1.55ms]  SELECT * FROM "products"  WHERE (id = 1 and seller_id = 1) LIMIT 1  
+[1 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/api/models/Product.go:133) 
+[2020-11-13 16:50:11]  [0.75ms]  DELETE FROM "products"  WHERE (id = 1 and seller_id = 1)  
+[1 rows affected or returned ] 
+--- PASS: TestDeleteAProduct (1.07s)
+=== RUN   TestFindAllTransactions
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:117) 
+[2020-11-13 16:50:11]  [19.45ms]  DROP TABLE "products"  
+[0 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:117) 
+[2020-11-13 16:50:11]  [6.86ms]  DROP TABLE "transactions"  
+[0 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:117) 
+[2020-11-13 16:50:11]  [8.36ms]  DROP TABLE "users"  
+[0 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:122) 
+[2020-11-13 16:50:11]  [207.63ms]  CREATE TABLE "users" ("id" bigserial,"nickname" varchar(255) NOT NULL UNIQUE,"email" varchar(100) NOT NULL UNIQUE,"password" varchar(100) NOT NULL,"created_at" timestamp with time zone DEFAULT CURRENT_TIMESTAMP,"updated_at" timestamp with time zone DEFAULT CURRENT_TIMESTAMP , PRIMARY KEY ("id"))  
+[0 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:122) 
+[2020-11-13 16:50:12]  [107.93ms]  CREATE TABLE "products" ("id" bigserial,"product_name" varchar(255) NOT NULL,"product_description" varchar(255) NOT NULL,"available_stock" bigint NOT NULL,"price" bigint NOT NULL,"seller_id" bigint NOT NULL,"created_at" timestamp with time zone DEFAULT CURRENT_TIMESTAMP,"updated_at" timestamp with time zone DEFAULT CURRENT_TIMESTAMP , PRIMARY KEY ("id"))  
+[0 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:122) 
+[2020-11-13 16:50:12]  [74.27ms]  CREATE TABLE "transactions" ("id" bigserial,"product_id" bigint NOT NULL,"qty" bigint NOT NULL,"total_price" bigint NOT NULL,"buyer_id" bigint NOT NULL,"created_at" timestamp with time zone,"updated_at" timestamp with time zone DEFAULT CURRENT_TIMESTAMP , PRIMARY KEY ("id"))  
+[0 rows affected or returned ] 
+2020/11/13 16:50:12 Successfully refreshed tables
+2020/11/13 16:50:12 refreshAllTable routine OK !!!
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:219) 
+[2020-11-13 16:50:12]  [2.67ms]  INSERT INTO "users" ("nickname","email","password","created_at","updated_at") VALUES ('Yongwoo Grid','yongwoo@gmail.com','/pidE6iCz9wDWABqXpeZCCkimg93SYWEePLN753OpLUj59cezW','2020-11-13 16:50:12','2020-11-13 16:50:12') RETURNING "users"."id"  
+[1 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:225) 
+[2020-11-13 16:50:12]  [2.02ms]  INSERT INTO "products" ("product_name","product_description","available_stock","price","seller_id","created_at","updated_at") VALUES ('Oreo Kelapa','Oreo Kelapa taste',100,15000,1,'2020-11-13 16:50:12','2020-11-13 16:50:12') RETURNING "products"."id"  
+[1 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:229) 
+[2020-11-13 16:50:12]  [1.75ms]  INSERT INTO "transactions" ("product_id","qty","total_price","buyer_id","created_at","updated_at") VALUES (1,3,45000,1,'2020-11-13 16:50:12','2020-11-13 16:50:12') RETURNING "transactions"."id"  
+[1 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:219) 
+[2020-11-13 16:50:12]  [1.03ms]  INSERT INTO "users" ("nickname","email","password","created_at","updated_at") VALUES ('Yura Ann','yura@gmail.com','.GDHQWW7qHpCPGIKA1oc5zg8Imrv0/tO','2020-11-13 16:50:12','2020-11-13 16:50:12') RETURNING "users"."id"  
+[1 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:225) 
+[2020-11-13 16:50:12]  [0.94ms]  INSERT INTO "products" ("product_name","product_description","available_stock","price","seller_id","created_at","updated_at") VALUES ('Oreo Kelapa Muda','Oreo Kelapa Muda taste',100,15000,2,'2020-11-13 16:50:12','2020-11-13 16:50:12') RETURNING "products"."id"  
+[1 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:229) 
+[2020-11-13 16:50:12]  [1.26ms]  INSERT INTO "transactions" ("product_id","qty","total_price","buyer_id","created_at","updated_at") VALUES (2,3,45000,2,'2020-11-13 16:50:12','2020-11-13 16:50:12') RETURNING "transactions"."id"  
+[1 rows affected or returned ] 
+2020/11/13 16:50:12 seedAllTable routine OK !!!
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/api/models/Transaction.go:92) 
+[2020-11-13 16:50:12]  [1.26ms]  SELECT * FROM "transactions"   LIMIT 100  
+[2 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/api/models/Transaction.go:98) 
+[2020-11-13 16:50:12]  [1.12ms]  SELECT * FROM "users"  WHERE (id = 1) LIMIT 1  
+[1 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/api/models/Transaction.go:98) 
+[2020-11-13 16:50:12]  [0.92ms]  SELECT * FROM "users"  WHERE (id = 2) LIMIT 1  
+[1 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/api/models/Transaction.go:104) 
+[2020-11-13 16:50:12]  [0.93ms]  SELECT * FROM "products"  WHERE (id = 1) LIMIT 1  
+[1 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/api/models/Transaction.go:104) 
+[2020-11-13 16:50:12]  [2.41ms]  SELECT * FROM "products"  WHERE (id = 2) LIMIT 1  
+[1 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/api/models/Transaction.go:111) 
+[2020-11-13 16:50:12]  [1.12ms]  SELECT * FROM "users"  WHERE (id = 1) LIMIT 1  
+[1 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/api/models/Transaction.go:111) 
+[2020-11-13 16:50:12]  [0.73ms]  SELECT * FROM "users"  WHERE (id = 2) LIMIT 1  
+[1 rows affected or returned ] 
+--- PASS: TestFindAllTransactions (0.75s)
+=== RUN   TestSaveTransaction
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:117) 
+[2020-11-13 16:50:12]  [10.48ms]  DROP TABLE "products"  
+[0 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:117) 
+[2020-11-13 16:50:12]  [7.89ms]  DROP TABLE "transactions"  
+[0 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:117) 
+[2020-11-13 16:50:12]  [8.17ms]  DROP TABLE "users"  
+[0 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:122) 
+[2020-11-13 16:50:12]  [141.00ms]  CREATE TABLE "users" ("id" bigserial,"nickname" varchar(255) NOT NULL UNIQUE,"email" varchar(100) NOT NULL UNIQUE,"password" varchar(100) NOT NULL,"created_at" timestamp with time zone DEFAULT CURRENT_TIMESTAMP,"updated_at" timestamp with time zone DEFAULT CURRENT_TIMESTAMP , PRIMARY KEY ("id"))  
+[0 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:122) 
+[2020-11-13 16:50:12]  [119.02ms]  CREATE TABLE "products" ("id" bigserial,"product_name" varchar(255) NOT NULL,"product_description" varchar(255) NOT NULL,"available_stock" bigint NOT NULL,"price" bigint NOT NULL,"seller_id" bigint NOT NULL,"created_at" timestamp with time zone DEFAULT CURRENT_TIMESTAMP,"updated_at" timestamp with time zone DEFAULT CURRENT_TIMESTAMP , PRIMARY KEY ("id"))  
+[0 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:122) 
+[2020-11-13 16:50:12]  [84.85ms]  CREATE TABLE "transactions" ("id" bigserial,"product_id" bigint NOT NULL,"qty" bigint NOT NULL,"total_price" bigint NOT NULL,"buyer_id" bigint NOT NULL,"created_at" timestamp with time zone,"updated_at" timestamp with time zone DEFAULT CURRENT_TIMESTAMP , PRIMARY KEY ("id"))  
+[0 rows affected or returned ] 
+2020/11/13 16:50:12 Successfully refreshed tables
+2020/11/13 16:50:12 refreshAllTable routine OK !!!
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:117) 
+[2020-11-13 16:50:12]  [7.84ms]  DROP TABLE "products"  
+[0 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:117) 
+[2020-11-13 16:50:12]  [8.84ms]  DROP TABLE "transactions"  
+[0 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:117) 
+[2020-11-13 16:50:12]  [8.70ms]  DROP TABLE "users"  
+[0 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:122) 
+[2020-11-13 16:50:13]  [219.43ms]  CREATE TABLE "users" ("id" bigserial,"nickname" varchar(255) NOT NULL UNIQUE,"email" varchar(100) NOT NULL UNIQUE,"password" varchar(100) NOT NULL,"created_at" timestamp with time zone DEFAULT CURRENT_TIMESTAMP,"updated_at" timestamp with time zone DEFAULT CURRENT_TIMESTAMP , PRIMARY KEY ("id"))  
+[0 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:122) 
+[2020-11-13 16:50:13]  [151.80ms]  CREATE TABLE "products" ("id" bigserial,"product_name" varchar(255) NOT NULL,"product_description" varchar(255) NOT NULL,"available_stock" bigint NOT NULL,"price" bigint NOT NULL,"seller_id" bigint NOT NULL,"created_at" timestamp with time zone DEFAULT CURRENT_TIMESTAMP,"updated_at" timestamp with time zone DEFAULT CURRENT_TIMESTAMP , PRIMARY KEY ("id"))  
+[0 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:122) 
+[2020-11-13 16:50:13]  [63.19ms]  CREATE TABLE "transactions" ("id" bigserial,"product_id" bigint NOT NULL,"qty" bigint NOT NULL,"total_price" bigint NOT NULL,"buyer_id" bigint NOT NULL,"created_at" timestamp with time zone,"updated_at" timestamp with time zone DEFAULT CURRENT_TIMESTAMP , PRIMARY KEY ("id"))  
+[0 rows affected or returned ] 
+2020/11/13 16:50:13 Successfully refreshed tables
+2020/11/13 16:50:13 refreshAllTable routine OK !!!
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:142) 
+[2020-11-13 16:50:13]  [2.35ms]  INSERT INTO "users" ("nickname","email","password","created_at","updated_at") VALUES ('Faker Phil','faker@gmail.com','/TYK','2020-11-13 16:50:13','2020-11-13 16:50:13') RETURNING "users"."id"  
+[1 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:153) 
+[2020-11-13 16:50:13]  [2.08ms]  INSERT INTO "products" ("product_name","product_description","available_stock","price","seller_id","created_at","updated_at") VALUES ('Oreo Kelapa','Oreo Kelapa taste',100,15000,1,'2020-11-13 16:50:13','2020-11-13 16:50:13') RETURNING "products"."id"  
+[1 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:163) 
+[2020-11-13 16:50:13]  [1.76ms]  INSERT INTO "transactions" ("product_id","qty","total_price","buyer_id","created_at","updated_at") VALUES (1,3,45000,1,'2020-11-13 16:50:13','2020-11-13 16:50:13') RETURNING "transactions"."id"  
+[1 rows affected or returned ] 
+2020/11/13 16:50:13 seedOneAllTable routine OK !!!
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/api/models/Transaction.go:55) 
+[2020-11-13 16:50:13]  [0.99ms]  INSERT INTO "transactions" ("product_id","qty","total_price","buyer_id","created_at","updated_at") VALUES (1,3,45000,1,'2020-11-13 16:50:13','2020-11-13 16:50:13') RETURNING "transactions"."id"  
+[1 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/api/models/Transaction.go:61) 
+[2020-11-13 16:50:13]  [1.48ms]  SELECT * FROM "products"  WHERE (id = 1) LIMIT 1  
+[1 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/api/models/Transaction.go:67) 
+[2020-11-13 16:50:13]  [1.20ms]  SELECT * FROM "users"  WHERE (id = 1) LIMIT 1  
+[1 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/api/models/Transaction.go:71) 
+[2020-11-13 16:50:13]  [0.83ms]  UPDATE "products" SET "available_stock" = 97, "updated_at" = '2020-11-13 16:50:13'  WHERE (id = 1)  
+[1 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/api/models/Transaction.go:76) 
+[2020-11-13 16:50:13]  [1.33ms]  SELECT * FROM "products"  WHERE (id = 1) LIMIT 1  
+[1 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/api/models/Transaction.go:81) 
+[2020-11-13 16:50:13]  [0.92ms]  SELECT * FROM "users"  WHERE (id = 1) LIMIT 1  
+[1 rows affected or returned ] 
+--- PASS: TestSaveTransaction (1.05s)
+=== RUN   TestGetTransactionByID
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:117) 
+[2020-11-13 16:50:13]  [18.44ms]  DROP TABLE "products"  
+[0 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:117) 
+[2020-11-13 16:50:13]  [6.79ms]  DROP TABLE "transactions"  
+[0 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:117) 
+[2020-11-13 16:50:13]  [7.99ms]  DROP TABLE "users"  
+[0 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:122) 
+[2020-11-13 16:50:13]  [208.57ms]  CREATE TABLE "users" ("id" bigserial,"nickname" varchar(255) NOT NULL UNIQUE,"email" varchar(100) NOT NULL UNIQUE,"password" varchar(100) NOT NULL,"created_at" timestamp with time zone DEFAULT CURRENT_TIMESTAMP,"updated_at" timestamp with time zone DEFAULT CURRENT_TIMESTAMP , PRIMARY KEY ("id"))  
+[0 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:122) 
+[2020-11-13 16:50:13]  [140.21ms]  CREATE TABLE "products" ("id" bigserial,"product_name" varchar(255) NOT NULL,"product_description" varchar(255) NOT NULL,"available_stock" bigint NOT NULL,"price" bigint NOT NULL,"seller_id" bigint NOT NULL,"created_at" timestamp with time zone DEFAULT CURRENT_TIMESTAMP,"updated_at" timestamp with time zone DEFAULT CURRENT_TIMESTAMP , PRIMARY KEY ("id"))  
+[0 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:122) 
+[2020-11-13 16:50:13]  [74.05ms]  CREATE TABLE "transactions" ("id" bigserial,"product_id" bigint NOT NULL,"qty" bigint NOT NULL,"total_price" bigint NOT NULL,"buyer_id" bigint NOT NULL,"created_at" timestamp with time zone,"updated_at" timestamp with time zone DEFAULT CURRENT_TIMESTAMP , PRIMARY KEY ("id"))  
+[0 rows affected or returned ] 
+2020/11/13 16:50:13 Successfully refreshed tables
+2020/11/13 16:50:13 refreshAllTable routine OK !!!
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:117) 
+[2020-11-13 16:50:13]  [8.65ms]  DROP TABLE "products"  
+[0 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:117) 
+[2020-11-13 16:50:13]  [8.03ms]  DROP TABLE "transactions"  
+[0 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:117) 
+[2020-11-13 16:50:13]  [8.65ms]  DROP TABLE "users"  
+[0 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:122) 
+[2020-11-13 16:50:14]  [174.65ms]  CREATE TABLE "users" ("id" bigserial,"nickname" varchar(255) NOT NULL UNIQUE,"email" varchar(100) NOT NULL UNIQUE,"password" varchar(100) NOT NULL,"created_at" timestamp with time zone DEFAULT CURRENT_TIMESTAMP,"updated_at" timestamp with time zone DEFAULT CURRENT_TIMESTAMP , PRIMARY KEY ("id"))  
+[0 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:122) 
+[2020-11-13 16:50:14]  [129.59ms]  CREATE TABLE "products" ("id" bigserial,"product_name" varchar(255) NOT NULL,"product_description" varchar(255) NOT NULL,"available_stock" bigint NOT NULL,"price" bigint NOT NULL,"seller_id" bigint NOT NULL,"created_at" timestamp with time zone DEFAULT CURRENT_TIMESTAMP,"updated_at" timestamp with time zone DEFAULT CURRENT_TIMESTAMP , PRIMARY KEY ("id"))  
+[0 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:122) 
+[2020-11-13 16:50:14]  [73.97ms]  CREATE TABLE "transactions" ("id" bigserial,"product_id" bigint NOT NULL,"qty" bigint NOT NULL,"total_price" bigint NOT NULL,"buyer_id" bigint NOT NULL,"created_at" timestamp with time zone,"updated_at" timestamp with time zone DEFAULT CURRENT_TIMESTAMP , PRIMARY KEY ("id"))  
+[0 rows affected or returned ] 
+2020/11/13 16:50:14 Successfully refreshed tables
+2020/11/13 16:50:14 refreshAllTable routine OK !!!
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:142) 
+[2020-11-13 16:50:14]  [2.27ms]  INSERT INTO "users" ("nickname","email","password","created_at","updated_at") VALUES ('Faker Phil','faker@gmail.com','/9ST.w5mV4HSCd6gaaBXJGOFf4y','2020-11-13 16:50:14','2020-11-13 16:50:14') RETURNING "users"."id"  
+[1 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:153) 
+[2020-11-13 16:50:14]  [1.90ms]  INSERT INTO "products" ("product_name","product_description","available_stock","price","seller_id","created_at","updated_at") VALUES ('Oreo Kelapa','Oreo Kelapa taste',100,15000,1,'2020-11-13 16:50:14','2020-11-13 16:50:14') RETURNING "products"."id"  
+[1 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:163) 
+[2020-11-13 16:50:14]  [1.98ms]  INSERT INTO "transactions" ("product_id","qty","total_price","buyer_id","created_at","updated_at") VALUES (1,3,45000,1,'2020-11-13 16:50:14','2020-11-13 16:50:14') RETURNING "transactions"."id"  
+[1 rows affected or returned ] 
+2020/11/13 16:50:14 seedOneAllTable routine OK !!!
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/api/models/Transaction.go:122) 
+[2020-11-13 16:50:14]  [1.19ms]  SELECT * FROM "transactions"  WHERE (id = 1) LIMIT 1  
+[1 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/api/models/Transaction.go:127) 
+[2020-11-13 16:50:14]  [0.84ms]  SELECT * FROM "users"  WHERE (id = 1) LIMIT 1  
+[1 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/api/models/Transaction.go:132) 
+[2020-11-13 16:50:14]  [0.84ms]  SELECT * FROM "products"  WHERE (id = 1) LIMIT 1  
+[1 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/api/models/Transaction.go:137) 
+[2020-11-13 16:50:14]  [0.97ms]  SELECT * FROM "users"  WHERE (id = 1) LIMIT 1  
+[1 rows affected or returned ] 
+--- PASS: TestGetTransactionByID (1.05s)
+=== RUN   TestGetTransactionByUser
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:117) 
+[2020-11-13 16:50:14]  [16.05ms]  DROP TABLE "products"  
+[0 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:117) 
+[2020-11-13 16:50:14]  [7.07ms]  DROP TABLE "transactions"  
+[0 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:117) 
+[2020-11-13 16:50:14]  [8.53ms]  DROP TABLE "users"  
+[0 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:122) 
+[2020-11-13 16:50:14]  [217.98ms]  CREATE TABLE "users" ("id" bigserial,"nickname" varchar(255) NOT NULL UNIQUE,"email" varchar(100) NOT NULL UNIQUE,"password" varchar(100) NOT NULL,"created_at" timestamp with time zone DEFAULT CURRENT_TIMESTAMP,"updated_at" timestamp with time zone DEFAULT CURRENT_TIMESTAMP , PRIMARY KEY ("id"))  
+[0 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:122) 
+[2020-11-13 16:50:15]  [229.40ms]  CREATE TABLE "products" ("id" bigserial,"product_name" varchar(255) NOT NULL,"product_description" varchar(255) NOT NULL,"available_stock" bigint NOT NULL,"price" bigint NOT NULL,"seller_id" bigint NOT NULL,"created_at" timestamp with time zone DEFAULT CURRENT_TIMESTAMP,"updated_at" timestamp with time zone DEFAULT CURRENT_TIMESTAMP , PRIMARY KEY ("id"))  
+[0 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:122) 
+[2020-11-13 16:50:15]  [85.57ms]  CREATE TABLE "transactions" ("id" bigserial,"product_id" bigint NOT NULL,"qty" bigint NOT NULL,"total_price" bigint NOT NULL,"buyer_id" bigint NOT NULL,"created_at" timestamp with time zone,"updated_at" timestamp with time zone DEFAULT CURRENT_TIMESTAMP , PRIMARY KEY ("id"))  
+[0 rows affected or returned ] 
+2020/11/13 16:50:15 Successfully refreshed tables
+2020/11/13 16:50:15 refreshAllTable routine OK !!!
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:117) 
+[2020-11-13 16:50:15]  [9.17ms]  DROP TABLE "products"  
+[0 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:117) 
+[2020-11-13 16:50:15]  [8.38ms]  DROP TABLE "transactions"  
+[0 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:117) 
+[2020-11-13 16:50:15]  [19.91ms]  DROP TABLE "users"  
+[0 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:122) 
+[2020-11-13 16:50:15]  [206.47ms]  CREATE TABLE "users" ("id" bigserial,"nickname" varchar(255) NOT NULL UNIQUE,"email" varchar(100) NOT NULL UNIQUE,"password" varchar(100) NOT NULL,"created_at" timestamp with time zone DEFAULT CURRENT_TIMESTAMP,"updated_at" timestamp with time zone DEFAULT CURRENT_TIMESTAMP , PRIMARY KEY ("id"))  
+[0 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:122) 
+[2020-11-13 16:50:15]  [162.50ms]  CREATE TABLE "products" ("id" bigserial,"product_name" varchar(255) NOT NULL,"product_description" varchar(255) NOT NULL,"available_stock" bigint NOT NULL,"price" bigint NOT NULL,"seller_id" bigint NOT NULL,"created_at" timestamp with time zone DEFAULT CURRENT_TIMESTAMP,"updated_at" timestamp with time zone DEFAULT CURRENT_TIMESTAMP , PRIMARY KEY ("id"))  
+[0 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:122) 
+[2020-11-13 16:50:15]  [84.62ms]  CREATE TABLE "transactions" ("id" bigserial,"product_id" bigint NOT NULL,"qty" bigint NOT NULL,"total_price" bigint NOT NULL,"buyer_id" bigint NOT NULL,"created_at" timestamp with time zone,"updated_at" timestamp with time zone DEFAULT CURRENT_TIMESTAMP , PRIMARY KEY ("id"))  
+[0 rows affected or returned ] 
+2020/11/13 16:50:15 Successfully refreshed tables
+2020/11/13 16:50:15 refreshAllTable routine OK !!!
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:142) 
+[2020-11-13 16:50:15]  [2.01ms]  INSERT INTO "users" ("nickname","email","password","created_at","updated_at") VALUES ('Faker Phil','faker@gmail.com','','2020-11-13 16:50:15','2020-11-13 16:50:15') RETURNING "users"."id"  
+[1 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:153) 
+[2020-11-13 16:50:15]  [1.70ms]  INSERT INTO "products" ("product_name","product_description","available_stock","price","seller_id","created_at","updated_at") VALUES ('Oreo Kelapa','Oreo Kelapa taste',100,15000,1,'2020-11-13 16:50:15','2020-11-13 16:50:15') RETURNING "products"."id"  
+[1 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:163) 
+[2020-11-13 16:50:15]  [1.96ms]  INSERT INTO "transactions" ("product_id","qty","total_price","buyer_id","created_at","updated_at") VALUES (1,3,45000,1,'2020-11-13 16:50:15','2020-11-13 16:50:15') RETURNING "transactions"."id"  
+[1 rows affected or returned ] 
+2020/11/13 16:50:15 seedOneAllTable routine OK !!!
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/api/models/Transaction.go:122) 
+[2020-11-13 16:50:15]  [1.55ms]  SELECT * FROM "transactions"  WHERE "transactions"."id" = 1 AND ((id = 1)) LIMIT 1  
+[1 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/api/models/Transaction.go:127) 
+[2020-11-13 16:50:15]  [1.11ms]  SELECT * FROM "users"  WHERE "users"."id" = 1 AND ((id = 1)) LIMIT 1  
+[1 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/api/models/Transaction.go:132) 
+[2020-11-13 16:50:15]  [1.39ms]  SELECT * FROM "products"  WHERE "products"."id" = 1 AND ((id = 1)) LIMIT 1  
+[1 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/api/models/Transaction.go:137) 
+[2020-11-13 16:50:15]  [1.45ms]  SELECT * FROM "users"  WHERE "users"."id" = 1 AND ((id = 1)) LIMIT 1  
+[1 rows affected or returned ] 
+--- PASS: TestGetTransactionByUser (1.25s)
+=== RUN   TestUpdateATransaction
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:117) 
+[2020-11-13 16:50:15]  [13.19ms]  DROP TABLE "products"  
+[0 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:117) 
+[2020-11-13 16:50:15]  [6.92ms]  DROP TABLE "transactions"  
+[0 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:117) 
+[2020-11-13 16:50:15]  [9.56ms]  DROP TABLE "users"  
+[0 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:122) 
+[2020-11-13 16:50:16]  [207.38ms]  CREATE TABLE "users" ("id" bigserial,"nickname" varchar(255) NOT NULL UNIQUE,"email" varchar(100) NOT NULL UNIQUE,"password" varchar(100) NOT NULL,"created_at" timestamp with time zone DEFAULT CURRENT_TIMESTAMP,"updated_at" timestamp with time zone DEFAULT CURRENT_TIMESTAMP , PRIMARY KEY ("id"))  
+[0 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:122) 
+[2020-11-13 16:50:16]  [117.90ms]  CREATE TABLE "products" ("id" bigserial,"product_name" varchar(255) NOT NULL,"product_description" varchar(255) NOT NULL,"available_stock" bigint NOT NULL,"price" bigint NOT NULL,"seller_id" bigint NOT NULL,"created_at" timestamp with time zone DEFAULT CURRENT_TIMESTAMP,"updated_at" timestamp with time zone DEFAULT CURRENT_TIMESTAMP , PRIMARY KEY ("id"))  
+[0 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:122) 
+[2020-11-13 16:50:16]  [96.73ms]  CREATE TABLE "transactions" ("id" bigserial,"product_id" bigint NOT NULL,"qty" bigint NOT NULL,"total_price" bigint NOT NULL,"buyer_id" bigint NOT NULL,"created_at" timestamp with time zone,"updated_at" timestamp with time zone DEFAULT CURRENT_TIMESTAMP , PRIMARY KEY ("id"))  
+[0 rows affected or returned ] 
+2020/11/13 16:50:16 Successfully refreshed tables
+2020/11/13 16:50:16 refreshAllTable routine OK !!!
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:117) 
+[2020-11-13 16:50:16]  [8.89ms]  DROP TABLE "products"  
+[0 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:117) 
+[2020-11-13 16:50:16]  [7.79ms]  DROP TABLE "transactions"  
+[0 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:117) 
+[2020-11-13 16:50:16]  [8.07ms]  DROP TABLE "users"  
+[0 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:122) 
+[2020-11-13 16:50:16]  [174.49ms]  CREATE TABLE "users" ("id" bigserial,"nickname" varchar(255) NOT NULL UNIQUE,"email" varchar(100) NOT NULL UNIQUE,"password" varchar(100) NOT NULL,"created_at" timestamp with time zone DEFAULT CURRENT_TIMESTAMP,"updated_at" timestamp with time zone DEFAULT CURRENT_TIMESTAMP , PRIMARY KEY ("id"))  
+[0 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:122) 
+[2020-11-13 16:50:16]  [130.19ms]  CREATE TABLE "products" ("id" bigserial,"product_name" varchar(255) NOT NULL,"product_description" varchar(255) NOT NULL,"available_stock" bigint NOT NULL,"price" bigint NOT NULL,"seller_id" bigint NOT NULL,"created_at" timestamp with time zone DEFAULT CURRENT_TIMESTAMP,"updated_at" timestamp with time zone DEFAULT CURRENT_TIMESTAMP , PRIMARY KEY ("id"))  
+[0 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:122) 
+[2020-11-13 16:50:16]  [73.91ms]  CREATE TABLE "transactions" ("id" bigserial,"product_id" bigint NOT NULL,"qty" bigint NOT NULL,"total_price" bigint NOT NULL,"buyer_id" bigint NOT NULL,"created_at" timestamp with time zone,"updated_at" timestamp with time zone DEFAULT CURRENT_TIMESTAMP , PRIMARY KEY ("id"))  
+[0 rows affected or returned ] 
+2020/11/13 16:50:16 Successfully refreshed tables
+2020/11/13 16:50:16 refreshAllTable routine OK !!!
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:142) 
+[2020-11-13 16:50:16]  [2.34ms]  INSERT INTO "users" ("nickname","email","password","created_at","updated_at") VALUES ('Faker Phil','faker@gmail.com','/ZgeKFLAxUjO.nlg2f/TEp/5VmaGDrxjTOgX4qMPlKC','2020-11-13 16:50:16','2020-11-13 16:50:16') RETURNING "users"."id"  
+[1 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:153) 
+[2020-11-13 16:50:16]  [2.02ms]  INSERT INTO "products" ("product_name","product_description","available_stock","price","seller_id","created_at","updated_at") VALUES ('Oreo Kelapa','Oreo Kelapa taste',100,15000,1,'2020-11-13 16:50:16','2020-11-13 16:50:16') RETURNING "products"."id"  
+[1 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:163) 
+[2020-11-13 16:50:16]  [1.76ms]  INSERT INTO "transactions" ("product_id","qty","total_price","buyer_id","created_at","updated_at") VALUES (1,3,45000,1,'2020-11-13 16:50:16','2020-11-13 16:50:16') RETURNING "transactions"."id"  
+[1 rows affected or returned ] 
+2020/11/13 16:50:16 seedOneAllTable routine OK !!!
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/api/models/Transaction.go:191) 
+[2020-11-13 16:50:16]  [1.12ms]  UPDATE "transactions" SET "product_id" = 1, "qty" = 4, "total_price" = 50000, "updated_at" = '2020-11-13 16:50:16'  WHERE (id = 1)  
+[1 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/api/models/Transaction.go:202) 
+[2020-11-13 16:50:16]  [1.35ms]  SELECT * FROM "users"  WHERE (id = 1) LIMIT 1  
+[1 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/api/models/Transaction.go:207) 
+[2020-11-13 16:50:16]  [1.02ms]  SELECT * FROM "products"  WHERE (id = 1) LIMIT 1  
+[1 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/api/models/Transaction.go:212) 
+[2020-11-13 16:50:16]  [1.14ms]  SELECT * FROM "users"  WHERE (id = 1) LIMIT 1  
+[1 rows affected or returned ] 
+--- PASS: TestUpdateATransaction (1.07s)
+=== RUN   TestDeleteATransaction
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:117) 
+[2020-11-13 16:50:16]  [15.48ms]  DROP TABLE "products"  
+[0 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:117) 
+[2020-11-13 16:50:16]  [8.02ms]  DROP TABLE "transactions"  
+[0 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:117) 
+[2020-11-13 16:50:16]  [8.53ms]  DROP TABLE "users"  
+[0 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:122) 
+[2020-11-13 16:50:17]  [185.71ms]  CREATE TABLE "users" ("id" bigserial,"nickname" varchar(255) NOT NULL UNIQUE,"email" varchar(100) NOT NULL UNIQUE,"password" varchar(100) NOT NULL,"created_at" timestamp with time zone DEFAULT CURRENT_TIMESTAMP,"updated_at" timestamp with time zone DEFAULT CURRENT_TIMESTAMP , PRIMARY KEY ("id"))  
+[0 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:122) 
+[2020-11-13 16:50:17]  [251.92ms]  CREATE TABLE "products" ("id" bigserial,"product_name" varchar(255) NOT NULL,"product_description" varchar(255) NOT NULL,"available_stock" bigint NOT NULL,"price" bigint NOT NULL,"seller_id" bigint NOT NULL,"created_at" timestamp with time zone DEFAULT CURRENT_TIMESTAMP,"updated_at" timestamp with time zone DEFAULT CURRENT_TIMESTAMP , PRIMARY KEY ("id"))  
+[0 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:122) 
+[2020-11-13 16:50:17]  [73.71ms]  CREATE TABLE "transactions" ("id" bigserial,"product_id" bigint NOT NULL,"qty" bigint NOT NULL,"total_price" bigint NOT NULL,"buyer_id" bigint NOT NULL,"created_at" timestamp with time zone,"updated_at" timestamp with time zone DEFAULT CURRENT_TIMESTAMP , PRIMARY KEY ("id"))  
+[0 rows affected or returned ] 
+2020/11/13 16:50:17 Successfully refreshed tables
+2020/11/13 16:50:17 refreshAllTable routine OK !!!
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:117) 
+[2020-11-13 16:50:17]  [19.34ms]  DROP TABLE "products"  
+[0 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:117) 
+[2020-11-13 16:50:17]  [8.88ms]  DROP TABLE "transactions"  
+[0 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:117) 
+[2020-11-13 16:50:17]  [20.00ms]  DROP TABLE "users"  
+[0 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:122) 
+[2020-11-13 16:50:17]  [184.31ms]  CREATE TABLE "users" ("id" bigserial,"nickname" varchar(255) NOT NULL UNIQUE,"email" varchar(100) NOT NULL UNIQUE,"password" varchar(100) NOT NULL,"created_at" timestamp with time zone DEFAULT CURRENT_TIMESTAMP,"updated_at" timestamp with time zone DEFAULT CURRENT_TIMESTAMP , PRIMARY KEY ("id"))  
+[0 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:122) 
+[2020-11-13 16:50:17]  [107.78ms]  CREATE TABLE "products" ("id" bigserial,"product_name" varchar(255) NOT NULL,"product_description" varchar(255) NOT NULL,"available_stock" bigint NOT NULL,"price" bigint NOT NULL,"seller_id" bigint NOT NULL,"created_at" timestamp with time zone DEFAULT CURRENT_TIMESTAMP,"updated_at" timestamp with time zone DEFAULT CURRENT_TIMESTAMP , PRIMARY KEY ("id"))  
+[0 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:122) 
+[2020-11-13 16:50:17]  [74.59ms]  CREATE TABLE "transactions" ("id" bigserial,"product_id" bigint NOT NULL,"qty" bigint NOT NULL,"total_price" bigint NOT NULL,"buyer_id" bigint NOT NULL,"created_at" timestamp with time zone,"updated_at" timestamp with time zone DEFAULT CURRENT_TIMESTAMP , PRIMARY KEY ("id"))  
+[0 rows affected or returned ] 
+2020/11/13 16:50:17 Successfully refreshed tables
+2020/11/13 16:50:17 refreshAllTable routine OK !!!
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:142) 
+[2020-11-13 16:50:17]  [2.35ms]  INSERT INTO "users" ("nickname","email","password","created_at","updated_at") VALUES ('Faker Phil','faker@gmail.com','.WQlSbSjqzuo41vn90H3NvOfY7Eth8b2','2020-11-13 16:50:17','2020-11-13 16:50:17') RETURNING "users"."id"  
+[1 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:153) 
+[2020-11-13 16:50:17]  [1.77ms]  INSERT INTO "products" ("product_name","product_description","available_stock","price","seller_id","created_at","updated_at") VALUES ('Oreo Kelapa','Oreo Kelapa taste',100,15000,1,'2020-11-13 16:50:17','2020-11-13 16:50:17') RETURNING "products"."id"  
+[1 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:163) 
+[2020-11-13 16:50:17]  [2.18ms]  INSERT INTO "transactions" ("product_id","qty","total_price","buyer_id","created_at","updated_at") VALUES (1,3,45000,1,'2020-11-13 16:50:17','2020-11-13 16:50:17') RETURNING "transactions"."id"  
+[1 rows affected or returned ] 
+2020/11/13 16:50:17 seedOneAllTable routine OK !!!
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/api/models/Transaction.go:222) 
+[2020-11-13 16:50:17]  [1.54ms]  SELECT * FROM "transactions"  WHERE (id = 1 and Buyer_id = 1) LIMIT 1  
+[1 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/api/models/Transaction.go:222) 
+[2020-11-13 16:50:17]  [0.78ms]  DELETE FROM "transactions"  WHERE (id = 1 and Buyer_id = 1)  
+[1 rows affected or returned ] 
+--- PASS: TestDeleteATransaction (1.15s)
+=== RUN   TestFindAllUsers
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:54) 
+[2020-11-13 16:50:18]  [8.40ms]  DROP TABLE "users"  
+[0 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:59) 
+[2020-11-13 16:50:18]  [174.61ms]  CREATE TABLE "users" ("id" bigserial,"nickname" varchar(255) NOT NULL UNIQUE,"email" varchar(100) NOT NULL UNIQUE,"password" varchar(100) NOT NULL,"created_at" timestamp with time zone DEFAULT CURRENT_TIMESTAMP,"updated_at" timestamp with time zone DEFAULT CURRENT_TIMESTAMP , PRIMARY KEY ("id"))  
+[0 rows affected or returned ] 
+2020/11/13 16:50:18 Successfully refreshed table
+2020/11/13 16:50:18 refreshUserTable routine OK !!!
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:103) 
+[2020-11-13 16:50:18]  [2.12ms]  INSERT INTO "users" ("nickname","email","password","created_at","updated_at") VALUES ('Yongwoo Grid','yongwoo@gmail.com','/rvT1eDo6MB4g0KTkB8e92Lkok6rmBWwWvRh2','2020-11-13 16:50:18','2020-11-13 16:50:18') RETURNING "users"."id"  
+[1 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:103) 
+[2020-11-13 16:50:18]  [1.05ms]  INSERT INTO "users" ("nickname","email","password","created_at","updated_at") VALUES ('Sehee Ruby','Sehee@gmail.com','..pAcwZHVIHh/eQ0SrAugS3cfy/K','2020-11-13 16:50:18','2020-11-13 16:50:18') RETURNING "users"."id"  
+[1 rows affected or returned ] 
+2020/11/13 16:50:18 seedUsers routine OK !!!
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/api/models/User.go:108) 
+[2020-11-13 16:50:18]  [0.78ms]  SELECT * FROM "users"   LIMIT 100  
+[2 rows affected or returned ] 
+--- PASS: TestFindAllUsers (0.45s)
+=== RUN   TestSaveUser
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:54) 
+[2020-11-13 16:50:18]  [19.03ms]  DROP TABLE "users"  
+[0 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:59) 
+[2020-11-13 16:50:18]  [239.15ms]  CREATE TABLE "users" ("id" bigserial,"nickname" varchar(255) NOT NULL UNIQUE,"email" varchar(100) NOT NULL UNIQUE,"password" varchar(100) NOT NULL,"created_at" timestamp with time zone DEFAULT CURRENT_TIMESTAMP,"updated_at" timestamp with time zone DEFAULT CURRENT_TIMESTAMP , PRIMARY KEY ("id"))  
+[0 rows affected or returned ] 
+2020/11/13 16:50:18 Successfully refreshed table
+2020/11/13 16:50:18 refreshUserTable routine OK !!!
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/api/models/User.go:98) 
+[2020-11-13 16:50:18]  [2.26ms]  INSERT INTO "users" ("id","nickname","email","password","created_at","updated_at") VALUES (1,'testsave','testsave@gmail.com','/pztS3cx6ycHUPpiJX4DJ6XXgSaC','2020-11-13 16:50:18','2020-11-13 16:50:18') RETURNING "users"."id"  
+[1 rows affected or returned ] 
+--- PASS: TestSaveUser (0.39s)
+=== RUN   TestGetUserByID
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:54) 
+[2020-11-13 16:50:18]  [9.22ms]  DROP TABLE "users"  
+[0 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:59) 
+[2020-11-13 16:50:19]  [207.73ms]  CREATE TABLE "users" ("id" bigserial,"nickname" varchar(255) NOT NULL UNIQUE,"email" varchar(100) NOT NULL UNIQUE,"password" varchar(100) NOT NULL,"created_at" timestamp with time zone DEFAULT CURRENT_TIMESTAMP,"updated_at" timestamp with time zone DEFAULT CURRENT_TIMESTAMP , PRIMARY KEY ("id"))  
+[0 rows affected or returned ] 
+2020/11/13 16:50:19 Successfully refreshed table
+2020/11/13 16:50:19 refreshUserTable routine OK !!!
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:54) 
+[2020-11-13 16:50:19]  [8.63ms]  DROP TABLE "users"  
+[0 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:59) 
+[2020-11-13 16:50:19]  [206.78ms]  CREATE TABLE "users" ("id" bigserial,"nickname" varchar(255) NOT NULL UNIQUE,"email" varchar(100) NOT NULL UNIQUE,"password" varchar(100) NOT NULL,"created_at" timestamp with time zone DEFAULT CURRENT_TIMESTAMP,"updated_at" timestamp with time zone DEFAULT CURRENT_TIMESTAMP , PRIMARY KEY ("id"))  
+[0 rows affected or returned ] 
+2020/11/13 16:50:19 Successfully refreshed table
+2020/11/13 16:50:19 refreshUserTable routine OK !!!
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:78) 
+[2020-11-13 16:50:19]  [2.22ms]  INSERT INTO "users" ("nickname","email","password","created_at","updated_at") VALUES ('Khan','khan@gmail.com','','2020-11-13 16:50:19','2020-11-13 16:50:19') RETURNING "users"."id"  
+[1 rows affected or returned ] 
+2020/11/13 16:50:19 seedOneUser routine OK !!!
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/api/models/User.go:117) 
+[2020-11-13 16:50:19]  [1.60ms]  SELECT * FROM "users"  WHERE (id = 1) LIMIT 1  
+[1 rows affected or returned ] 
+--- PASS: TestGetUserByID (0.57s)
+=== RUN   TestUpdateAUser
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:54) 
+[2020-11-13 16:50:19]  [7.23ms]  DROP TABLE "users"  
+[0 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:59) 
+[2020-11-13 16:50:19]  [196.12ms]  CREATE TABLE "users" ("id" bigserial,"nickname" varchar(255) NOT NULL UNIQUE,"email" varchar(100) NOT NULL UNIQUE,"password" varchar(100) NOT NULL,"created_at" timestamp with time zone DEFAULT CURRENT_TIMESTAMP,"updated_at" timestamp with time zone DEFAULT CURRENT_TIMESTAMP , PRIMARY KEY ("id"))  
+[0 rows affected or returned ] 
+2020/11/13 16:50:19 Successfully refreshed table
+2020/11/13 16:50:19 refreshUserTable routine OK !!!
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:54) 
+[2020-11-13 16:50:19]  [8.33ms]  DROP TABLE "users"  
+[0 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:59) 
+[2020-11-13 16:50:19]  [163.07ms]  CREATE TABLE "users" ("id" bigserial,"nickname" varchar(255) NOT NULL UNIQUE,"email" varchar(100) NOT NULL UNIQUE,"password" varchar(100) NOT NULL,"created_at" timestamp with time zone DEFAULT CURRENT_TIMESTAMP,"updated_at" timestamp with time zone DEFAULT CURRENT_TIMESTAMP , PRIMARY KEY ("id"))  
+[0 rows affected or returned ] 
+2020/11/13 16:50:19 Successfully refreshed table
+2020/11/13 16:50:19 refreshUserTable routine OK !!!
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:78) 
+[2020-11-13 16:50:19]  [1.84ms]  INSERT INTO "users" ("nickname","email","password","created_at","updated_at") VALUES ('Khan','khan@gmail.com','.RF6eoDx7T1gnPTJeZmueZXf4Oc8OU4/GC3sSA8YdxKv9Bcj77u','2020-11-13 16:50:19','2020-11-13 16:50:19') RETURNING "users"."id"  
+[1 rows affected or returned ] 
+2020/11/13 16:50:19 seedOneUser routine OK !!!
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/api/models/User.go:134) 
+[2020-11-13 16:50:20]  [1.05ms]  SELECT * FROM "users"  WHERE (id = 1) LIMIT 1  
+[1 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/api/models/User.go:134) 
+[2020-11-13 16:50:20]  [0.84ms]  UPDATE "users" SET "email" = 'testupdate@gmail.com', "nickname" = 'testUpdate', "password" = '.JLMXoCCOwJy1n5nS1zsRQiLuheofp/79Cf1feay', "updated_at" = '2020-11-13 16:50:20'  WHERE "users"."id" = 1 AND ((id = 1))  
+[1 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/api/models/User.go:146) 
+[2020-11-13 16:50:20]  [1.49ms]  SELECT * FROM "users"  WHERE "users"."id" = 1 AND ((id = 1) AND (id = 1)) LIMIT 1  
+[1 rows affected or returned ] 
+--- PASS: TestUpdateAUser (0.64s)
+=== RUN   TestDeleteAUser
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:54) 
+[2020-11-13 16:50:20]  [7.02ms]  DROP TABLE "users"  
+[0 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:59) 
+[2020-11-13 16:50:20]  [174.05ms]  CREATE TABLE "users" ("id" bigserial,"nickname" varchar(255) NOT NULL UNIQUE,"email" varchar(100) NOT NULL UNIQUE,"password" varchar(100) NOT NULL,"created_at" timestamp with time zone DEFAULT CURRENT_TIMESTAMP,"updated_at" timestamp with time zone DEFAULT CURRENT_TIMESTAMP , PRIMARY KEY ("id"))  
+[0 rows affected or returned ] 
+2020/11/13 16:50:20 Successfully refreshed table
+2020/11/13 16:50:20 refreshUserTable routine OK !!!
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:54) 
+[2020-11-13 16:50:20]  [18.02ms]  DROP TABLE "users"  
+[0 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:59) 
+[2020-11-13 16:50:20]  [163.59ms]  CREATE TABLE "users" ("id" bigserial,"nickname" varchar(255) NOT NULL UNIQUE,"email" varchar(100) NOT NULL UNIQUE,"password" varchar(100) NOT NULL,"created_at" timestamp with time zone DEFAULT CURRENT_TIMESTAMP,"updated_at" timestamp with time zone DEFAULT CURRENT_TIMESTAMP , PRIMARY KEY ("id"))  
+[0 rows affected or returned ] 
+2020/11/13 16:50:20 Successfully refreshed table
+2020/11/13 16:50:20 refreshUserTable routine OK !!!
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/tests/modeltests/model_test.go:78) 
+[2020-11-13 16:50:20]  [2.16ms]  INSERT INTO "users" ("nickname","email","password","created_at","updated_at") VALUES ('Khan','khan@gmail.com','/u.rjMqqRW1IgXnv6','2020-11-13 16:50:20','2020-11-13 16:50:20') RETURNING "users"."id"  
+[1 rows affected or returned ] 
+2020/11/13 16:50:20 seedOneUser routine OK !!!
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/api/models/User.go:155) 
+[2020-11-13 16:50:20]  [1.41ms]  SELECT * FROM "users"  WHERE (id = 1) LIMIT 1  
+[1 rows affected or returned ] 
+
+(/home/bayu/Learn/golang/golang-backend-crud-api/api/models/User.go:155) 
+[2020-11-13 16:50:20]  [0.62ms]  DELETE FROM "users"  WHERE (id = 1)  
+[1 rows affected or returned ] 
+--- PASS: TestDeleteAUser (0.52s)
+PASS
+2020/11/13 16:50:20 After calling m.Run() !!!

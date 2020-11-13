@@ -56,16 +56,30 @@ func refreshUserTable() error {
 			return err
 		}
 	*/
-	err := server.DB.DropTableIfExists(&models.User{}).Error
-	if err != nil {
-		return err
-	}
-	err = server.DB.AutoMigrate(&models.User{}).Error
-	if err != nil {
-		return err
-	}
+	// err := server.DB.DropTableIfExists(&models.User{}).Error
+	// if err != nil {
+	// 	return err
+	// }
+	// err = server.DB.AutoMigrate(&models.User{}).Error
+	// if err != nil {
+	// 	return err
+	// }
 
-	log.Printf("Successfully refreshed table(s)")
+	// log.Printf("Successfully refreshed table(s)")
+	// return nil
+
+	//server.DB.Exec("SET foreign_key_checks=0")
+	err := server.DB.Debug().DropTableIfExists(&models.User{}).Error
+	if err != nil {
+		return err
+	}
+	//server.DB.Exec("SET foreign_key_checks=1")
+	err = server.DB.Debug().AutoMigrate(&models.User{}).Error
+	if err != nil {
+		return err
+	}
+	log.Printf("Successfully refreshed table")
+	log.Printf("refreshUserTable routine OK !!!")
 	return nil
 }
 
@@ -77,8 +91,8 @@ func seedOneUser() (models.User, error) {
 	}
 
 	user := models.User{
-		Nickname: "Khan",
-		Email:    "khan@gmail.com",
+		Nickname: "Pet",
+		Email:    "pet@gmail.com",
 		Password: "password",
 	}
 
