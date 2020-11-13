@@ -6,15 +6,16 @@ import (
 	"os"
 	"testing"
 
-	"github.com/jinzhu/gorm"
-	"github.com/joho/godotenv"
 	"github.com/bayuajik2403/golang-backend-crud-api/api/controllers"
 	"github.com/bayuajik2403/golang-backend-crud-api/api/models"
+	"github.com/jinzhu/gorm"
+	"github.com/joho/godotenv"
 )
 
 var server = controllers.Server{}
 var userInstance = models.User{}
-var postInstance = models.Post{}
+var productInstance = models.Product{}
+var transactionInstance = models.Transaction{}
 
 func TestMain(m *testing.M) {
 	err := godotenv.Load(os.ExpandEnv("../../.env"))
@@ -33,38 +34,15 @@ func Database() {
 
 	TestDbDriver := os.Getenv("TestDbDriver")
 
-	if TestDbDriver == "mysql" {
-		DBURL := fmt.Sprintf("%s:%s@tcp(%s:%s)/%s?charset=utf8&parseTime=True&loc=Local", os.Getenv("TestDbUser"), os.Getenv("TestDbPassword"), os.Getenv("TestDbHost"), os.Getenv("TestDbPort"), os.Getenv("TestDbName"))
-		server.DB, err = gorm.Open(TestDbDriver, DBURL)
-		if err != nil {
-			fmt.Printf("Cannot connect to %s database\n", TestDbDriver)
-			log.Fatal("This is the error:", err)
-		} else {
-			fmt.Printf("We are connected to the %s database\n", TestDbDriver)
-		}
+	DBURL := fmt.Sprintf("host=%s port=%s user=%s dbname=%s sslmode=disable password=%s", os.Getenv("TestDbHost"), os.Getenv("TestDbPort"), os.Getenv("TestDbUser"), os.Getenv("TestDbName"), os.Getenv("TestDbPassword"))
+	server.DB, err = gorm.Open(TestDbDriver, DBURL)
+	if err != nil {
+		fmt.Printf("Cannot connect to %s database\n", TestDbDriver)
+		log.Fatal("This is the error:", err)
+	} else {
+		fmt.Printf("We are connected to the %s database\n", TestDbDriver)
 	}
-	if TestDbDriver == "postgres" {
-		DBURL := fmt.Sprintf("host=%s port=%s user=%s dbname=%s sslmode=disable password=%s", os.Getenv("TestDbHost"), os.Getenv("TestDbPort"), os.Getenv("TestDbUser"), os.Getenv("TestDbName"), os.Getenv("TestDbPassword"))
-		server.DB, err = gorm.Open(TestDbDriver, DBURL)
-		if err != nil {
-			fmt.Printf("Cannot connect to %s database\n", TestDbDriver)
-			log.Fatal("This is the error:", err)
-		} else {
-			fmt.Printf("We are connected to the %s database\n", TestDbDriver)
-		}
-	}
-	if TestDbDriver == "sqlite3" {
-		//DBURL := fmt.Sprintf("host=%s port=%s user=%s dbname=%s sslmode=disable password=%s", DbHost, DbPort, DbUser, DbName, DbPassword)
-		testDbName := os.Getenv("TestDbName")
-		server.DB, err = gorm.Open(TestDbDriver, testDbName)
-		if err != nil {
-			fmt.Printf("Cannot connect to %s database\n", TestDbDriver)
-			log.Fatal("This is the error:", err)
-		} else {
-			fmt.Printf("We are connected to the %s database\n", TestDbDriver)
-		}
-		server.DB.Exec("PRAGMA foreign_keys = ON")
-	}
+
 }
 
 func refreshUserTable() error {
@@ -78,11 +56,11 @@ func refreshUserTable() error {
 			return err
 		}
 	*/
-	err := server.DB.DropTableIfExists(&models.Post{}, &models.User{}).Error
+	err := server.DB.DropTableIfExists(&models.User{}).Error
 	if err != nil {
 		return err
 	}
-	err = server.DB.AutoMigrate(&models.User{}, &models.Post{}).Error
+	err = server.DB.AutoMigrate(&models.User{}).Error
 	if err != nil {
 		return err
 	}
@@ -99,15 +77,17 @@ func seedOneUser() (models.User, error) {
 	}
 
 	user := models.User{
-		Nickname: "Pet",
-		Email:    "pet@gmail.com",
+		Nickname: "Khan",
+		Email:    "khan@gmail.com",
 		Password: "password",
 	}
 
-	err = server.DB.Model(&models.User{}).Create(&user).Error
-	if err != nil {
-		return models.User{}, err
+	err2 := server.DB.Debug().Model(&models.User{}).Create(&user).Error
+	if err2 != nil {
+		log.Fatalf("cannot seed users table: %v", err)
 	}
+
+	log.Printf("seedOneUser routine OK !!!")
 	return user, nil
 }
 
@@ -140,11 +120,11 @@ func seedUsers() ([]models.User, error) {
 
 func refreshAllTable() error {
 
-	err := server.DB.DropTableIfExists(&models.Post{}, &models.User{}).Error
+	err := server.DB.DropTableIfExists(&models.Product{}, &models.Transaction{}, &models.User{}).Error
 	if err != nil {
 		return err
 	}
-	err = server.DB.AutoMigrate(&models.User{}, &models.Post{}).Error
+	err = server.DB.AutoMigrate(&models.User{}, &models.Product{}, &models.Transaction{}).Error
 	if err != nil {
 		return err
 	}
@@ -152,74 +132,109 @@ func refreshAllTable() error {
 	return nil
 }
 
-func seedOneAllTable() (models.Post, error) {
+func seedOneAllTable() (models.User, models.Product, models.Transaction, error) {
 
 	err := refreshAllTable()
 	if err != nil {
-		return models.Post{}, err
+		return models.User{}, models.Product{}, models.Transaction{}, err
 	}
 	user := models.User{
-		Nickname: "Sam Phil",
-		Email:    "sam@gmail.com",
+		Nickname: "Faker Phil",
+		Email:    "faker@gmail.com",
 		Password: "password",
 	}
-	err = server.DB.Model(&models.User{}).Create(&user).Error
+	err = server.DB.Debug().Model(&models.User{}).Create(&user).Error
 	if err != nil {
-		return models.Post{}, err
+		return models.User{}, models.Product{}, models.Transaction{}, err
 	}
-	post := models.Post{
-		Title:    "This is the title sam",
-		Content:  "This is the content sam",
-		AuthorID: user.ID,
+	product := models.Product{
+		ProductName:        "Oreo Kelapa",
+		ProductDescription: "Oreo Kelapa taste",
+		AvailableStock:     100,
+		Price:              15000,
+		SellerID:           user.ID,
 	}
-	err = server.DB.Model(&models.Post{}).Create(&post).Error
+	err = server.DB.Debug().Model(&models.Product{}).Create(&product).Error
 	if err != nil {
-		return models.Post{}, err
+		return models.User{}, models.Product{}, models.Transaction{}, err
 	}
-	return post, nil
+	transaction := models.Transaction{
+		ProductID:  product.ID,
+		Qty:        3,
+		TotalPrice: 45000,
+		BuyerID:    user.ID,
+	}
+	err = server.DB.Debug().Model(&models.Transaction{}).Create(&transaction).Error
+	if err != nil {
+		return models.User{}, models.Product{}, models.Transaction{}, err
+	}
+
+	log.Printf("seedOneAllTable routine OK !!!")
+	return user, product, transaction, nil
 }
 
-func seedAllTable() ([]models.User, []models.Post, error) {
+func seedAllTable() ([]models.User, []models.Product, []models.Transaction, error) {
 
 	var err error
 
 	if err != nil {
-		return []models.User{}, []models.Post{}, err
+		return []models.User{}, []models.Product{}, []models.Transaction{}, err
 	}
 	var users = []models.User{
 		models.User{
-			Nickname: "Steven victor",
-			Email:    "steven@gmail.com",
+			Nickname: "Yongwoo Grid",
+			Email:    "yongwoo@gmail.com",
 			Password: "password",
 		},
 		models.User{
-			Nickname: "Magu Frank",
-			Email:    "magu@gmail.com",
+			Nickname: "Yura Ann",
+			Email:    "yura@gmail.com",
 			Password: "password",
 		},
 	}
-	var posts = []models.Post{
-		models.Post{
-			Title:   "Title 1",
-			Content: "Hello world 1",
+	var products = []models.Product{
+		models.Product{
+			ProductName:        "Oreo Kelapa",
+			ProductDescription: "Oreo Kelapa taste",
+			AvailableStock:     100,
+			Price:              15000,
 		},
-		models.Post{
-			Title:   "Title 2",
-			Content: "Hello world 2",
+		models.Product{
+			ProductName:        "Oreo Kelapa Muda",
+			ProductDescription: "Oreo Kelapa Muda taste",
+			AvailableStock:     100,
+			Price:              15000,
+		},
+	}
+	var transactions = []models.Transaction{
+		models.Transaction{
+			ProductID:  1,
+			Qty:        3,
+			TotalPrice: 45000,
+		},
+		models.Transaction{
+			ProductID:  2,
+			Qty:        3,
+			TotalPrice: 45000,
 		},
 	}
 
-	for i, _ := range users {
-		err = server.DB.Model(&models.User{}).Create(&users[i]).Error
+	for i := range users {
+		err = server.DB.Debug().Model(&models.User{}).Create(&users[i]).Error
 		if err != nil {
 			log.Fatalf("cannot seed users table: %v", err)
 		}
-		posts[i].AuthorID = users[i].ID
-
-		err = server.DB.Model(&models.Post{}).Create(&posts[i]).Error
+		products[i].SellerID = users[i].ID
+		transactions[i].BuyerID = users[i].ID
+		err = server.DB.Debug().Model(&models.Product{}).Create(&products[i]).Error
+		if err != nil {
+			log.Fatalf("cannot seed posts table: %v", err)
+		}
+		err = server.DB.Debug().Model(&models.Transaction{}).Create(&transactions[i]).Error
 		if err != nil {
 			log.Fatalf("cannot seed posts table: %v", err)
 		}
 	}
-	return users, posts, nil
+	log.Printf("seedAllTable routine OK !!!")
+	return users, products, transactions, nil
 }

@@ -15,13 +15,13 @@ import (
 	"gopkg.in/go-playground/assert.v1"
 )
 
-func TestCreatePost(t *testing.T) {
+func TestCreateTransaction(t *testing.T) {
 
 	err := refreshAllTable()
 	if err != nil {
 		log.Fatal(err)
 	}
-	user, err := seedOneUser()
+	user, product, _, err := seedOneAllTable()
 	if err != nil {
 		log.Fatalf("Cannot seed user %v\n", err)
 	}
@@ -34,62 +34,58 @@ func TestCreatePost(t *testing.T) {
 	samples := []struct {
 		inputJSON    string
 		statusCode   int
-		title        string
-		content      string
-		author_id    uint32
+		product_id   uint64
+		qty          uint32
+		total_price  uint32
+		buyer_id     uint32
 		tokenGiven   string
 		errorMessage string
 	}{
 		{
-			inputJSON:    `{"title":"The title", "content": "the content", "author_id": 1}`,
+			inputJSON:    `{"product_id":1,"qty":3,"total_price":45000,"buyer_id":1}`,
 			statusCode:   201,
 			tokenGiven:   tokenString,
-			title:        "The title",
-			content:      "the content",
-			author_id:    user.ID,
+			product_id:   product.ID,
+			qty:          3,
+			total_price:  45000,
+			buyer_id:     user.ID,
 			errorMessage: "",
 		},
 		{
-			inputJSON:    `{"title":"The title", "content": "the content", "author_id": 1}`,
-			statusCode:   500,
-			tokenGiven:   tokenString,
-			errorMessage: "Title Already Taken",
-		},
-		{
 			// When no token is passed
-			inputJSON:    `{"title":"When no token is passed", "content": "the content", "author_id": 1}`,
+			inputJSON:    `{"product_id":1,"qty":3,"total_price":45000,"buyer_id":1}`,
 			statusCode:   401,
 			tokenGiven:   "",
 			errorMessage: "Unauthorized",
 		},
 		{
 			// When incorrect token is passed
-			inputJSON:    `{"title":"When incorrect token is passed", "content": "the content", "author_id": 1}`,
+			inputJSON:    `{"product_id":1,"qty":3,"total_price":45000,"buyer_id":1}`,
 			statusCode:   401,
 			tokenGiven:   "This is an incorrect token",
 			errorMessage: "Unauthorized",
 		},
 		{
-			inputJSON:    `{"title": "", "content": "The content", "author_id": 1}`,
+			inputJSON:    `{"product_id":0,"qty":3,"total_price":45000,"buyer_id":1}`,
 			statusCode:   422,
 			tokenGiven:   tokenString,
-			errorMessage: "Required Title",
+			errorMessage: "Required product id",
 		},
 		{
-			inputJSON:    `{"title": "This is a title", "content": "", "author_id": 1}`,
+			inputJSON:    `{"product_id":1,"qty":0,"total_price":45000,"buyer_id":1}`,
 			statusCode:   422,
 			tokenGiven:   tokenString,
-			errorMessage: "Required Content",
+			errorMessage: "Required Qty",
 		},
 		{
-			inputJSON:    `{"title": "This is an awesome title", "content": "the content"}`,
+			inputJSON:    `{"product_id":1,"qty":3,"total_price":45000,"buyer_id":0}`,
 			statusCode:   422,
 			tokenGiven:   tokenString,
-			errorMessage: "Required Author",
+			errorMessage: "Required buyer id",
 		},
 		{
 			// When user 2 uses user 1 token
-			inputJSON:    `{"title": "This is an awesome title", "content": "the content", "author_id": 2}`,
+			inputJSON:    `{"product_id":1,"qty":3,"total_price":45000,"buyer_id":2}`,
 			statusCode:   401,
 			tokenGiven:   tokenString,
 			errorMessage: "Unauthorized",
@@ -97,12 +93,12 @@ func TestCreatePost(t *testing.T) {
 	}
 	for _, v := range samples {
 
-		req, err := http.NewRequest("POST", "/posts", bytes.NewBufferString(v.inputJSON))
+		req, err := http.NewRequest("POST", "/transactions", bytes.NewBufferString(v.inputJSON))
 		if err != nil {
 			t.Errorf("this is the error: %v\n", err)
 		}
 		rr := httptest.NewRecorder()
-		handler := http.HandlerFunc(server.CreatePost)
+		handler := http.HandlerFunc(server.CreateTransaction)
 
 		req.Header.Set("Authorization", v.tokenGiven)
 		handler.ServeHTTP(rr, req)
@@ -114,9 +110,10 @@ func TestCreatePost(t *testing.T) {
 		}
 		assert.Equal(t, rr.Code, v.statusCode)
 		if v.statusCode == 201 {
-			assert.Equal(t, responseMap["title"], v.title)
-			assert.Equal(t, responseMap["content"], v.content)
-			assert.Equal(t, responseMap["author_id"], float64(v.author_id)) //just for both ids to have the same type
+			assert.Equal(t, responseMap["product_id"], v.product_id)
+			assert.Equal(t, responseMap["qty"], v.qty)
+			assert.Equal(t, responseMap["total_price"], v.total_price)
+			assert.Equal(t, responseMap["buyer_id"], float64(v.buyer_id)) //just for both ids to have the same type
 		}
 		if v.statusCode == 401 || v.statusCode == 422 || v.statusCode == 500 && v.errorMessage != "" {
 			assert.Equal(t, responseMap["error"], v.errorMessage)
@@ -124,71 +121,73 @@ func TestCreatePost(t *testing.T) {
 	}
 }
 
-func TestGetPosts(t *testing.T) {
+func TestGetTransactions(t *testing.T) {
 
 	err := refreshAllTable()
 	if err != nil {
 		log.Fatal(err)
 	}
-	_, _, err = seedAllTable()
+	_, _, _, err = seedAllTable()
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	req, err := http.NewRequest("GET", "/posts", nil)
+	req, err := http.NewRequest("GET", "/transactions", nil)
 	if err != nil {
 		t.Errorf("this is the error: %v\n", err)
 	}
 	rr := httptest.NewRecorder()
-	handler := http.HandlerFunc(server.GetPosts)
+	handler := http.HandlerFunc(server.GetTransactions)
 	handler.ServeHTTP(rr, req)
 
-	var posts []models.Post
-	err = json.Unmarshal([]byte(rr.Body.String()), &posts)
+	var transactions []models.Transaction
+	err = json.Unmarshal([]byte(rr.Body.String()), &transactions)
 
 	assert.Equal(t, rr.Code, http.StatusOK)
-	assert.Equal(t, len(posts), 2)
+	assert.Equal(t, len(transactions), 2)
 }
-func TestGetPostByID(t *testing.T) {
+func TestGetTransactionByID(t *testing.T) {
 
 	err := refreshAllTable()
 	if err != nil {
 		log.Fatal(err)
 	}
-	post, err := seedOneAllTable()
+	_, _, transaction, err := seedOneAllTable()
 	if err != nil {
 		log.Fatal(err)
 	}
-	postSample := []struct {
+	transactionSample := []struct {
 		id           string
 		statusCode   int
-		title        string
-		content      string
-		author_id    uint32
+		product_id   uint64
+		qty          uint32
+		total_price  uint32
+		buyer_id     uint32
 		errorMessage string
 	}{
 		{
-			id:         strconv.Itoa(int(post.ID)),
-			statusCode: 200,
-			title:      post.Title,
-			content:    post.Content,
-			author_id:  post.AuthorID,
+			id:          strconv.Itoa(int(transaction.ID)),
+			statusCode:  200,
+			product_id:  transaction.ProductID,
+			qty:         transaction.Qty,
+			total_price: transaction.TotalPrice,
+			buyer_id:    transaction.BuyerID,
 		},
 		{
 			id:         "unknwon",
 			statusCode: 400,
 		},
 	}
-	for _, v := range postSample {
+	for _, v := range transactionSample {
 
-		req, err := http.NewRequest("GET", "/posts", nil)
+		req, err := http.NewRequest("GET", "/transactions", nil)
 		if err != nil {
 			t.Errorf("this is the error: %v\n", err)
 		}
 		req = mux.SetURLVars(req, map[string]string{"id": v.id})
 
 		rr := httptest.NewRecorder()
-		handler := http.HandlerFunc(server.GetPost)
+		handler := http.HandlerFunc(server.GetTransaction)
 		handler.ServeHTTP(rr, req)
 
 		responseMap := make(map[string]interface{})
@@ -199,24 +198,25 @@ func TestGetPostByID(t *testing.T) {
 		assert.Equal(t, rr.Code, v.statusCode)
 
 		if v.statusCode == 200 {
-			assert.Equal(t, post.Title, responseMap["title"])
-			assert.Equal(t, post.Content, responseMap["content"])
-			assert.Equal(t, float64(post.AuthorID), responseMap["author_id"]) //the response author id is float64
+			assert.Equal(t, responseMap["product_id"], transaction.ProductID)
+			assert.Equal(t, responseMap["qty"], transaction.Qty)
+			assert.Equal(t, responseMap["total_price"], transaction.TotalPrice)
+			assert.Equal(t, responseMap["buyer_id"], float64(transaction.BuyerID)) //just for both ids to have the same type
 		}
 	}
 }
 
-func TestUpdatePost(t *testing.T) {
+func TestUpdateTransaction(t *testing.T) {
 
-	var PostUserEmail, PostUserPassword string
-	var AuthPostAuthorID uint32
-	var AuthPostID uint32
+	var TransactionUserEmail, TransactionUserPassword string
+	var AuthTransactionBuyerID uint32
+	var AuthTransactionID uint64
 
 	err := refreshAllTable()
 	if err != nil {
 		log.Fatal(err)
 	}
-	users, posts, err := seedAllTable()
+	users, _, transactions, err := seedAllTable()
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -225,99 +225,86 @@ func TestUpdatePost(t *testing.T) {
 		if user.ID == 2 {
 			continue
 		}
-		PostUserEmail = user.Email
-		PostUserPassword = "password" //Note the password in the database is already hashed, we want unhashed
+		TransactionUserEmail = user.Email
+		TransactionUserPassword = "password" //Note the password in the database is already hashed, we want unhashed
 	}
 	//Login the user and get the authentication token
-	token, err := server.SignIn(PostUserEmail, PostUserPassword)
+	token, err := server.SignIn(TransactionUserEmail, TransactionUserPassword)
 	if err != nil {
 		log.Fatalf("cannot login: %v\n", err)
 	}
 	tokenString := fmt.Sprintf("Bearer %v", token)
 
-	// Get only the first post
-	for _, post := range posts {
-		if post.ID == 2 {
+	// Get only the first transaction
+	for _, transaction := range transactions {
+		if transaction.ID == 2 {
 			continue
 		}
-		AuthPostID = post.ID
-		AuthPostAuthorID = post.AuthorID
+		AuthTransactionID = transaction.ID
+		AuthTransactionBuyerID = transaction.BuyerID
 	}
-	// fmt.Printf("this is the auth post: %v\n", AuthPostID)
+	// fmt.Printf("this is the auth transaction: %v\n", AuthTransactionID)
 
 	samples := []struct {
 		id           string
 		updateJSON   string
 		statusCode   int
-		title        string
-		content      string
-		author_id    uint32
+		product_id   uint64
+		qty          uint32
+		total_price  uint32
+		buyer_id     uint32
 		tokenGiven   string
 		errorMessage string
 	}{
 		{
 			// Convert int64 to int first before converting to string
-			id:           strconv.Itoa(int(AuthPostID)),
-			updateJSON:   `{"title":"The updated post", "content": "This is the updated content", "author_id": 1}`,
+			id:           strconv.Itoa(int(AuthTransactionID)),
+			updateJSON:   `{"product_id":1,"qty":3,"total_price":45000,"buyer_id":1}`,
 			statusCode:   200,
-			title:        "The updated post",
-			content:      "This is the updated content",
-			author_id:    AuthPostAuthorID,
+			product_id:   1,
+			qty:          3,
+			total_price:  45000,
+			buyer_id:     AuthTransactionBuyerID,
 			tokenGiven:   tokenString,
 			errorMessage: "",
 		},
 		{
 			// When no token is provided
-			id:           strconv.Itoa(int(AuthPostID)),
-			updateJSON:   `{"title":"This is still another title", "content": "This is the updated content", "author_id": 1}`,
+			id:           strconv.Itoa(int(AuthTransactionID)),
+			updateJSON:   `{"product_id":1,"qty":3,"total_price":45000,"buyer_id":1}`,
 			tokenGiven:   "",
 			statusCode:   401,
 			errorMessage: "Unauthorized",
 		},
 		{
 			// When incorrect token is provided
-			id:           strconv.Itoa(int(AuthPostID)),
-			updateJSON:   `{"title":"This is still another title", "content": "This is the updated content", "author_id": 1}`,
+			id:           strconv.Itoa(int(AuthTransactionID)),
+			updateJSON:   `{"product_id":1,"qty":3,"total_price":45000,"buyer_id":1}`,
 			tokenGiven:   "this is an incorrect token",
 			statusCode:   401,
 			errorMessage: "Unauthorized",
 		},
 		{
-			//Note: "Title 2" belongs to post 2, and title must be unique
-			id:           strconv.Itoa(int(AuthPostID)),
-			updateJSON:   `{"title":"Title 2", "content": "This is the updated content", "author_id": 1}`,
-			statusCode:   500,
-			tokenGiven:   tokenString,
-			errorMessage: "Title Already Taken",
-		},
-		{
-			id:           strconv.Itoa(int(AuthPostID)),
-			updateJSON:   `{"title":"", "content": "This is the updated content", "author_id": 1}`,
+			id:           strconv.Itoa(int(AuthTransactionID)),
+			updateJSON:   `{"product_id":0,"qty":3,"total_price":45000,"buyer_id":1}`,
 			statusCode:   422,
 			tokenGiven:   tokenString,
-			errorMessage: "Required Title",
+			errorMessage: "Required Product ID",
 		},
 		{
-			id:           strconv.Itoa(int(AuthPostID)),
-			updateJSON:   `{"title":"Awesome title", "content": "", "author_id": 1}`,
+			id:           strconv.Itoa(int(AuthTransactionID)),
+			updateJSON:   `{"product_id":1,"qty":0,"total_price":45000,"buyer_id":1}`,
 			statusCode:   422,
 			tokenGiven:   tokenString,
-			errorMessage: "Required Content",
-		},
-		{
-			id:           strconv.Itoa(int(AuthPostID)),
-			updateJSON:   `{"title":"This is another title", "content": "This is the updated content"}`,
-			statusCode:   401,
-			tokenGiven:   tokenString,
-			errorMessage: "Unauthorized",
+			errorMessage: "Required Qty",
 		},
 		{
 			id:         "unknwon",
 			statusCode: 400,
 		},
 		{
-			id:           strconv.Itoa(int(AuthPostID)),
-			updateJSON:   `{"title":"This is still another title", "content": "This is the updated content", "author_id": 2}`,
+			id:           strconv.Itoa(int(AuthTransactionID)),
+			updateJSON:   `{"product_id":1,"qty":3,"total_price":45000,"buyer_id":2}`,
 			tokenGiven:   tokenString,
 			statusCode:   401,
 			errorMessage: "Unauthorized",
@@ -326,13 +313,13 @@ func TestUpdatePost(t *testing.T) {
 
 	for _, v := range samples {
 
-		req, err := http.NewRequest("POST", "/posts", bytes.NewBufferString(v.updateJSON))
+		req, err := http.NewRequest("POST", "/transactions", bytes.NewBufferString(v.updateJSON))
 		if err != nil {
 			t.Errorf("this is the error: %v\n", err)
 		}
 		req = mux.SetURLVars(req, map[string]string{"id": v.id})
 		rr := httptest.NewRecorder()
-		handler := http.HandlerFunc(server.UpdatePost)
+		handler := http.HandlerFunc(server.UpdateTransaction)
 
 		req.Header.Set("Authorization", v.tokenGiven)
 
@@ -345,9 +332,10 @@ func TestUpdatePost(t *testing.T) {
 		}
 		assert.Equal(t, rr.Code, v.statusCode)
 		if v.statusCode == 200 {
-			assert.Equal(t, responseMap["title"], v.title)
-			assert.Equal(t, responseMap["content"], v.content)
-			assert.Equal(t, responseMap["author_id"], float64(v.author_id)) //just to match the type of the json we receive thats why we used float64
+			assert.Equal(t, responseMap["product_id"], v.product_id)
+			assert.Equal(t, responseMap["qty"], v.qty)
+			assert.Equal(t, responseMap["total_price"], v.total_price)
+			assert.Equal(t, responseMap["buyer_id"], float64(v.buyer_id)) //just for both ids to have the same type
 		}
 		if v.statusCode == 401 || v.statusCode == 422 || v.statusCode == 500 && v.errorMessage != "" {
 			assert.Equal(t, responseMap["error"], v.errorMessage)
@@ -355,17 +343,17 @@ func TestUpdatePost(t *testing.T) {
 	}
 }
 
-func TestDeletePost(t *testing.T) {
+func TestDeleteTransaction(t *testing.T) {
 
-	var PostUserEmail, PostUserPassword string
-	var PostUserID uint32
-	var AuthPostID uint32
+	var TransactionUserEmail, TransactionUserPassword string
+	var TransactionBuyerID uint32
+	var AuthTransactionID uint64
 
 	err := refreshAllTable()
 	if err != nil {
 		log.Fatal(err)
 	}
-	users, posts, err := seedAllTable()
+	users, _, transactions, err := seedAllTable()
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -374,51 +362,51 @@ func TestDeletePost(t *testing.T) {
 		if user.ID == 1 {
 			continue
 		}
-		PostUserEmail = user.Email
-		PostUserPassword = "password" //Note the password in the database is already hashed, we want unhashed
+		TransactionUserEmail = user.Email
+		TransactionUserPassword = "password" //Note the password in the database is already hashed, we want unhashed
 	}
 	//Login the user and get the authentication token
-	token, err := server.SignIn(PostUserEmail, PostUserPassword)
+	token, err := server.SignIn(TransactionUserEmail, TransactionUserPassword)
 	if err != nil {
 		log.Fatalf("cannot login: %v\n", err)
 	}
 	tokenString := fmt.Sprintf("Bearer %v", token)
 
-	// Get only the second post
-	for _, post := range posts {
-		if post.ID == 1 {
+	// Get only the second transaction
+	for _, transaction := range transactions {
+		if transaction.ID == 1 {
 			continue
 		}
-		AuthPostID = post.ID
-		PostUserID = post.AuthorID
+		AuthTransactionID = transaction.ID
+		TransactionBuyerID = transaction.BuyerID
 	}
-	postSample := []struct {
+	transactionSample := []struct {
 		id           string
-		author_id    uint32
-		tokenGiven   string
 		statusCode   int
+		buyer_id     uint32
+		tokenGiven   string
 		errorMessage string
 	}{
 		{
 			// Convert int64 to int first before converting to string
-			id:           strconv.Itoa(int(AuthPostID)),
-			author_id:    PostUserID,
+			id:           strconv.Itoa(int(AuthTransactionID)),
+			buyer_id:     TransactionBuyerID,
 			tokenGiven:   tokenString,
 			statusCode:   204,
 			errorMessage: "",
 		},
 		{
 			// When empty token is passed
-			id:           strconv.Itoa(int(AuthPostID)),
-			author_id:    PostUserID,
+			id:           strconv.Itoa(int(AuthTransactionID)),
+			buyer_id:     TransactionBuyerID,
 			tokenGiven:   "",
 			statusCode:   401,
 			errorMessage: "Unauthorized",
 		},
 		{
 			// When incorrect token is passed
-			id:           strconv.Itoa(int(AuthPostID)),
-			author_id:    PostUserID,
+			id:           strconv.Itoa(int(AuthTransactionID)),
+			buyer_id:     TransactionBuyerID,
 			tokenGiven:   "This is an incorrect token",
 			statusCode:   401,
 			errorMessage: "Unauthorized",
@@ -430,18 +418,18 @@ func TestDeletePost(t *testing.T) {
 		},
 		{
 			id:           strconv.Itoa(int(1)),
-			author_id:    1,
+			buyer_id:     1,
 			statusCode:   401,
 			errorMessage: "Unauthorized",
 		},
 	}
-	for _, v := range postSample {
+	for _, v := range transactionSample {
 
-		req, _ := http.NewRequest("GET", "/posts", nil)
+		req, _ := http.NewRequest("GET", "/transactions", nil)
 		req = mux.SetURLVars(req, map[string]string{"id": v.id})
 
 		rr := httptest.NewRecorder()
-		handler := http.HandlerFunc(server.DeletePost)
+		handler := http.HandlerFunc(server.DeleteTransaction)
 
 		req.Header.Set("Authorization", v.tokenGiven)
 

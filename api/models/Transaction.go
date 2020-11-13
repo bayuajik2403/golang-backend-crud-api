@@ -10,7 +10,7 @@ import (
 type Transaction struct {
 	ID         uint64    `gorm:"primary_key;auto_increment" json:"id"`
 	ProductT   Product   `json:"productt"`
-	ProductID  uint32    `gorm:"not null" json:"product_id"`
+	ProductID  uint64    `gorm:"not null" json:"product_id"`
 	Qty        uint32    `gorm:"not null" json:"qty"`
 	TotalPrice uint32    `gorm:"not null" json:"total_price"`
 	Buyer      User      `json:"buyer"`
@@ -117,7 +117,7 @@ func (t *Transaction) FindAllTransactions(db *gorm.DB) (*[]Transaction, error) {
 	return &Transactions, nil
 }
 
-func (t *Transaction) FindTransactionByID(db *gorm.DB, pid uint32) (*Transaction, error) {
+func (t *Transaction) FindTransactionByID(db *gorm.DB, pid uint64) (*Transaction, error) {
 	var err error
 	err = db.Debug().Model(&Transaction{}).Where("id = ?", pid).Take(&t).Error
 	if err != nil {
@@ -143,7 +143,7 @@ func (t *Transaction) FindTransactionByID(db *gorm.DB, pid uint32) (*Transaction
 	return t, nil
 }
 
-func (t *Transaction) FindTransactionByUser(db *gorm.DB, pid uint32) (*[]Transaction, error) {
+func (t *Transaction) FindTransactionByUser(db *gorm.DB, pid uint64) (*[]Transaction, error) {
 	var err error
 	Transactions := []Transaction{}
 	err = db.Debug().Model(&Transaction{}).Where("buyer_id = ?", pid).Limit(100).Find(&Transactions).Error

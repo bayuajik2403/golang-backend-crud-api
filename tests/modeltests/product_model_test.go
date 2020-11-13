@@ -5,7 +5,7 @@ import (
 	"testing"
 
 	"github.com/bayuajik2403/golang-backend-crud-api/api/models"
-	_ "github.com/jinzhu/gorm/dialects/mysql"
+	_ "github.com/jinzhu/gorm/dialects/postgres"
 	"gopkg.in/go-playground/assert.v1"
 )
 
