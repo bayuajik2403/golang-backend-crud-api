@@ -77,7 +77,7 @@ func (p *Product) FindAllProducts(db *gorm.DB) (*[]Product, error) {
 	return &Products, nil
 }
 
-func (p *Product) FindProductByID(db *gorm.DB, pid uint64) (*Product, error) {
+func (p *Product) FindProductByID(db *gorm.DB, pid uint32) (*Product, error) {
 	var err error
 	err = db.Debug().Model(&Product{}).Where("id = ?", pid).Take(&p).Error
 	if err != nil {
@@ -92,7 +92,7 @@ func (p *Product) FindProductByID(db *gorm.DB, pid uint64) (*Product, error) {
 	return p, nil
 }
 
-func (p *Product) FindProductByUser(db *gorm.DB, pid uint64) (*[]Product, error) {
+func (p *Product) FindProductByUser(db *gorm.DB, pid uint32) (*[]Product, error) {
 	var err error
 	Products := []Product{}
 	err = db.Debug().Model(&Product{}).Where("seller_id = ?", pid).Limit(100).Find(&Products).Error

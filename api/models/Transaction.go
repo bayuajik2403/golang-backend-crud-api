@@ -117,7 +117,7 @@ func (t *Transaction) FindAllTransactions(db *gorm.DB) (*[]Transaction, error) {
 	return &Transactions, nil
 }
 
-func (t *Transaction) FindTransactionByID(db *gorm.DB, pid uint64) (*Transaction, error) {
+func (t *Transaction) FindTransactionByID(db *gorm.DB, pid uint32) (*Transaction, error) {
 	var err error
 	err = db.Debug().Model(&Transaction{}).Where("id = ?", pid).Take(&t).Error
 	if err != nil {
@@ -143,7 +143,7 @@ func (t *Transaction) FindTransactionByID(db *gorm.DB, pid uint64) (*Transaction
 	return t, nil
 }
 
-func (t *Transaction) FindTransactionByUser(db *gorm.DB, pid uint64) (*[]Transaction, error) {
+func (t *Transaction) FindTransactionByUser(db *gorm.DB, pid uint32) (*[]Transaction, error) {
 	var err error
 	Transactions := []Transaction{}
 	err = db.Debug().Model(&Transaction{}).Where("buyer_id = ?", pid).Limit(100).Find(&Transactions).Error
