@@ -12,7 +12,7 @@ if want to run in local, uncomment 'DB_HOST=127.0.0.1' and 'TestDbHost=127.0.0.1
 **-go test -v ./...**
 
 ### run docker
-**sometimes need to stop postgre server locally first**\
+**-sometimes need to stop postgre server locally first since I use the default port**\
 **-docker-compose up**\
 **-then stop: docker-compose down**\
 **-and run again in background: docker-compose up -d**
